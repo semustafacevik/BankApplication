@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace BankaProjesi
 {
-    public partial class Form1 : Form
+    public partial class frmYeniMusteri : Form
     {
-        public Form1()
+        public frmYeniMusteri()
         {
             InitializeComponent();
+        }
+
+        private void btnMusteriEkle_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

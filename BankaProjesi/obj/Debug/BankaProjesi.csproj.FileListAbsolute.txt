@@ -1,0 +1,11 @@
+C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\bin\Debug\BankaProjesi.exe.config
+C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\bin\Debug\BankaProjesi.exe
+C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\bin\Debug\BankaProjesi.pdb
+C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\obj\Debug\BankaProjesi.csprojResolveAssemblyReference.cache
+C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\obj\Debug\BankaProjesi.frmAnaEkran.resources
+C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\obj\Debug\BankaProjesi.frmYeniMusteri.resources
+C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\obj\Debug\BankaProjesi.Properties.Resources.resources
+C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\obj\Debug\BankaProjesi.csproj.GenerateResource.Cache
+C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\obj\Debug\BankaProjesi.csproj.CoreCompileInputs.cache
+C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\obj\Debug\BankaProjesi.exe
+C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\obj\Debug\BankaProjesi.pdb
