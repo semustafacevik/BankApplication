@@ -9,3 +9,4 @@ C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\obj\Debug\BankaProj
 C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\obj\Debug\BankaProjesi.csproj.CoreCompileInputs.cache
 C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\obj\Debug\BankaProjesi.exe
 C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\obj\Debug\BankaProjesi.pdb
+C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\obj\Debug\BankaProjesi.frmYeniHesap.resources

@@ -74,6 +74,7 @@
             this.btnYeniHesap.TabIndex = 1;
             this.btnYeniHesap.Text = "Yeni Hesap";
             this.btnYeniHesap.UseVisualStyleBackColor = true;
+            this.btnYeniHesap.Click += new System.EventHandler(this.btnYeniHesap_Click);
             // 
             // frmAnaEkran
             // 
@@ -87,6 +88,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmAnaEkran";
             this.Text = "ANA EKRAN";
+            this.Load += new System.EventHandler(this.frmAnaEkran_Load);
             this.ResumeLayout(false);
 
         }

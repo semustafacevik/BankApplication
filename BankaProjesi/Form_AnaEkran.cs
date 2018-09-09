@@ -12,6 +12,7 @@ namespace BankaProjesi
 {
     public partial class frmAnaEkran : Form
     {
+        Banka temelBanka = new Banka();
         public frmAnaEkran()
         {
             InitializeComponent();
@@ -20,8 +21,21 @@ namespace BankaProjesi
         private void btnYeniMusteri_Click(object sender, EventArgs e)
         {
             frmYeniMusteri yeniMusteri = new frmYeniMusteri();
-            yeniMusteri.Show();
+            yeniMusteri.banka = temelBanka;
+            yeniMusteri.ShowDialog();
 
+        }
+
+        private void frmAnaEkran_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnYeniHesap_Click(object sender, EventArgs e)
+        {
+            frmYeniHesap yeniHesap = new frmYeniHesap();
+            yeniHesap.banka = temelBanka;
+            yeniHesap.ShowDialog();
         }
     }
 }
