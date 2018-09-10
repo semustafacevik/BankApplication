@@ -35,7 +35,7 @@
             this.txtSoyad = new System.Windows.Forms.TextBox();
             this.txtAd = new System.Windows.Forms.TextBox();
             this.txtTelNo = new System.Windows.Forms.TextBox();
-            this.txtTCNo = new System.Windows.Forms.TextBox();
+            this.txtTCKN = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbMusTur = new System.Windows.Forms.ComboBox();
             this.btnMusteriEkle = new System.Windows.Forms.Button();
@@ -104,19 +104,21 @@
             // 
             this.txtTelNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtTelNo.Location = new System.Drawing.Point(34, 207);
+            this.txtTelNo.MaxLength = 10;
             this.txtTelNo.Multiline = true;
             this.txtTelNo.Name = "txtTelNo";
             this.txtTelNo.Size = new System.Drawing.Size(204, 32);
             this.txtTelNo.TabIndex = 3;
             // 
-            // txtTCNo
+            // txtTCKN
             // 
-            this.txtTCNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtTCNo.Location = new System.Drawing.Point(34, 30);
-            this.txtTCNo.Multiline = true;
-            this.txtTCNo.Name = "txtTCNo";
-            this.txtTCNo.Size = new System.Drawing.Size(204, 32);
-            this.txtTCNo.TabIndex = 0;
+            this.txtTCKN.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtTCKN.Location = new System.Drawing.Point(34, 30);
+            this.txtTCKN.MaxLength = 11;
+            this.txtTCKN.Multiline = true;
+            this.txtTCKN.Name = "txtTCKN";
+            this.txtTCKN.Size = new System.Drawing.Size(204, 32);
+            this.txtTCKN.TabIndex = 0;
             // 
             // label5
             // 
@@ -171,7 +173,7 @@
             this.Controls.Add(this.btnMusteriNumarasi);
             this.Controls.Add(this.btnMusteriEkle);
             this.Controls.Add(this.cmbMusTur);
-            this.Controls.Add(this.txtTCNo);
+            this.Controls.Add(this.txtTCKN);
             this.Controls.Add(this.txtTelNo);
             this.Controls.Add(this.txtAd);
             this.Controls.Add(this.txtSoyad);
@@ -182,6 +184,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmYeniMusteri";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MÜŞTERİ EKLEME EKRANI";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -197,7 +200,7 @@
         private System.Windows.Forms.TextBox txtSoyad;
         private System.Windows.Forms.TextBox txtAd;
         private System.Windows.Forms.TextBox txtTelNo;
-        private System.Windows.Forms.TextBox txtTCNo;
+        private System.Windows.Forms.TextBox txtTCKN;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmbMusTur;
         private System.Windows.Forms.Button btnMusteriEkle;

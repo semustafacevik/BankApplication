@@ -8,12 +8,23 @@ namespace BankaProjesi
 {
     public class Banka
     {
-        public List<Musteri> musteriler = new List<Musteri>();
+        public List<Musteri> Musteriler;
+        public List<Hesap> Hesaplar;
 
-
-        public void BankayaMusteriEkle(Musteri yeniMusteri)
+        public Banka()
         {
-            musteriler.Add(yeniMusteri);
+            Musteriler = new List<Musteri>();
+            Hesaplar = new List<Hesap>();
+        }
+
+        public void BankayaMusteriEkle(Musteri yenimusteri)
+        {
+            Musteriler.Add(yenimusteri);
+        }
+
+        public void BankayaHesapEkle(Hesap yeniHesap)
+        {
+            Hesaplar.Add(yeniHesap);
         }
     }
 }

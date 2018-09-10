@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Banka.cs" />
+    <Compile Include="Musteri_Bireysel.cs" />
     <Compile Include="Form_AnaEkran.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +69,7 @@
     <Compile Include="Form_YeniHesap.Designer.cs">
       <DependentUpon>Form_YeniHesap.cs</DependentUpon>
     </Compile>
+    <Compile Include="Musteri_Ticari.cs" />
     <EmbeddedResource Include="Form_AnaEkran.resx">
       <DependentUpon>Form_AnaEkran.cs</DependentUpon>
     </EmbeddedResource>

@@ -8,18 +8,23 @@ namespace BankaProjesi
 {
     public class Musteri
     {
-        public ulong TCNo;
+        public ulong TCKN;
         public string ad;
         public string soyad;
         public ulong telNo;
         public string musteriTuru;
         public ulong musteriNosu;
 
-        public List<Hesap> hesaplar = new List<Hesap>();
+        public List<Hesap> MusterininHesaplari;
 
+        public Musteri()
+        {
+            MusterininHesaplari = new List<Hesap>();
+        }
         public void MusteriyeHesapEkle(Hesap yeniHesap)
         {
-            hesaplar.Add(yeniHesap);
+            MusterininHesaplari.Add(yeniHesap);
         }
+
     }
 }

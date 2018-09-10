@@ -11,6 +11,7 @@ namespace BankaProjesi
         public ulong hesapNumarasi;
         public decimal bakiye;
         public decimal ekHesap;
+        public Musteri hangiMusteriyeait;
 
     }
 }

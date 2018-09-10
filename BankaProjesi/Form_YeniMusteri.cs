@@ -19,39 +19,52 @@ namespace BankaProjesi
             btnMusteriNumarasi.Hide();
         }
 
+        ulong musteriNo = 0;
+        Random randMusteriNo = new Random();
+
+
         private void btnMusteriEkle_Click(object sender, EventArgs e)
         {
-            ulong musteriTCNo = Convert.ToUInt32(txtTCNo.Text);
+            ulong musteriTCKN = Convert.ToUInt64(txtTCKN.Text);
             string musteriAdi = txtAd.Text;
             string musteriSoyadi = txtSoyad.Text;
-            ulong musteriTelno = Convert.ToUInt32(txtTelNo.Text);
+            ulong musteriTelno = Convert.ToUInt64(txtTelNo.Text);
             string musteriTuru = cmbMusTur.SelectedItem.ToString();
-
-            ulong musteriNo = 0;
-            Random randMusteriNo = new Random();
 
             if (musteriTuru == "Bireysel Müşteri")
             {
                 musteriNo = Convert.ToUInt32(randMusteriNo.Next(100000, 500000));
+                FarkliMusteriNumarasiUretme(100000, 500000);
             }
 
             else if (musteriTuru == "Ticari Müşteri")
             {
                 musteriNo = Convert.ToUInt32(randMusteriNo.Next(500000, 1000000));
+                FarkliMusteriNumarasiUretme(500000, 1000000);
             }
 
             else
             {
-                //// hatalı
+                // hatalı
             }
 
             btnMusteriNumarasi.Text = musteriNo.ToString();
             btnMusteriEkle.Hide();
             btnMusteriNumarasi.Show();
-            
-            
-            MusteriBilgileriniKaydet(musteriTCNo, musteriAdi, musteriSoyadi, musteriTelno, musteriTuru, musteriNo);
 
+            MusteriBilgileriniKaydet(musteriTCKN, musteriAdi, musteriSoyadi, musteriTelno, musteriTuru, musteriNo);
+        }
+
+        private void FarkliMusteriNumarasiUretme(int minDeger, int maxDeger)
+        {
+            foreach (Musteri mevcutMusteriler in banka.Musteriler)
+            {
+                while (musteriNo == mevcutMusteriler.musteriNosu)
+                {
+                    musteriNo = Convert.ToUInt32(randMusteriNo.Next(minDeger, maxDeger));
+                    FarkliMusteriNumarasiUretme(minDeger, maxDeger);
+                }
+            }
         }
 
         private void MusteriEklemeFormunuKapatma(object sender, EventArgs e)
@@ -59,19 +72,19 @@ namespace BankaProjesi
             this.Close();
         }
 
-        private void MusteriBilgileriniKaydet(ulong musTCNo, string musAd, string musSoyad, ulong musTelno, string musTur, ulong musNo)
+        private void MusteriBilgileriniKaydet(ulong musTCKN, string musAd, string musSoyad, ulong musTelno, string musTur, ulong musNo)
         {
             Musteri yeniMusteri = new Musteri
             {
-                TCNo = musTCNo,
+                TCKN = musTCKN,
                 ad = musAd,
                 soyad = musSoyad,
                 telNo = musTelno,
                 musteriTuru = musTur,
                 musteriNosu = musNo
             };
-
             banka.BankayaMusteriEkle(yeniMusteri);
         }
+
     }
 }
