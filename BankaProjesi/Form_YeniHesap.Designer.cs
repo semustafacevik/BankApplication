@@ -50,7 +50,7 @@
             // 
             this.txtMusteriNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtMusteriNo.Location = new System.Drawing.Point(21, 40);
-            this.txtMusteriNo.MaxLength = 7;
+            this.txtMusteriNo.MaxLength = 6;
             this.txtMusteriNo.Multiline = true;
             this.txtMusteriNo.Name = "txtMusteriNo";
             this.txtMusteriNo.Size = new System.Drawing.Size(190, 32);

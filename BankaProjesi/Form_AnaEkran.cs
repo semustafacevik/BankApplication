@@ -37,5 +37,12 @@ namespace BankaProjesi
             yeniHesap.banka = temelBanka;
             yeniHesap.ShowDialog();
         }
+
+        private void btnHesapIslemleri_Click(object sender, EventArgs e)
+        {
+            frmHesapIslemleri hesapIslemleri = new frmHesapIslemleri();
+            hesapIslemleri.banka = temelBanka;
+            hesapIslemleri.ShowDialog();
+        }
     }
 }

@@ -64,6 +64,7 @@
             this.btnHesapIslemleri.TabIndex = 2;
             this.btnHesapIslemleri.Text = "Hesap İşlemleri";
             this.btnHesapIslemleri.UseVisualStyleBackColor = true;
+            this.btnHesapIslemleri.Click += new System.EventHandler(this.btnHesapIslemleri_Click);
             // 
             // btnYeniHesap
             // 
