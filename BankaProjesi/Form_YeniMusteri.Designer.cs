@@ -39,7 +39,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cmbMusTur = new System.Windows.Forms.ComboBox();
             this.btnMusteriEkle = new System.Windows.Forms.Button();
-            this.btnMusteriNumarasi = new System.Windows.Forms.Button();
+            this.lblMusteriNo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -155,22 +155,23 @@
             this.btnMusteriEkle.UseVisualStyleBackColor = true;
             this.btnMusteriEkle.Click += new System.EventHandler(this.btnMusteriEkle_Click);
             // 
-            // btnMusteriNumarasi
+            // lblMusteriNo
             // 
-            this.btnMusteriNumarasi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnMusteriNumarasi.Location = new System.Drawing.Point(87, 318);
-            this.btnMusteriNumarasi.Name = "btnMusteriNumarasi";
-            this.btnMusteriNumarasi.Size = new System.Drawing.Size(102, 42);
-            this.btnMusteriNumarasi.TabIndex = 99;
-            this.btnMusteriNumarasi.UseVisualStyleBackColor = true;
-            this.btnMusteriNumarasi.Click += new System.EventHandler(this.MusteriEklemeFormunuKapatma);
+            this.lblMusteriNo.AutoSize = true;
+            this.lblMusteriNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblMusteriNo.Location = new System.Drawing.Point(101, 324);
+            this.lblMusteriNo.Name = "lblMusteriNo";
+            this.lblMusteriNo.Size = new System.Drawing.Size(78, 25);
+            this.lblMusteriNo.TabIndex = 6;
+            this.lblMusteriNo.Text = "123456";
+            this.lblMusteriNo.Click += new System.EventHandler(this.lblMusteriNo_Click);
             // 
             // frmYeniMusteri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(279, 372);
-            this.Controls.Add(this.btnMusteriNumarasi);
+            this.Controls.Add(this.lblMusteriNo);
             this.Controls.Add(this.btnMusteriEkle);
             this.Controls.Add(this.cmbMusTur);
             this.Controls.Add(this.txtTCKN);
@@ -204,6 +205,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmbMusTur;
         private System.Windows.Forms.Button btnMusteriEkle;
-        private System.Windows.Forms.Button btnMusteriNumarasi;
+        private System.Windows.Forms.Label lblMusteriNo;
     }
 }

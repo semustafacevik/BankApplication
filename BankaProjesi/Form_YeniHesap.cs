@@ -17,6 +17,7 @@ namespace BankaProjesi
         {
             InitializeComponent();
             btnHesapAc.Enabled = false;
+            lblHesapNo.Hide();
         }
 
         private Musteri hesapAcilacakmusteri = null;
@@ -31,22 +32,18 @@ namespace BankaProjesi
                 {
                     MusteriBilgileriniYazdırma(arananMusteri);
                     btnHesapAc.Enabled = true;
+                    btnMusBul.Enabled = false;
                     hesapAcilacakmusteri = arananMusteri;
                     break;
                 }
-
-                //else
-                //{
-                //    txtMusteriBilgileri.Text = aranacakMusterino + " müşteri numarasına sahip herhangi bir müşteri bulunamadı.";
-                //}
             }
         }
 
         private void MusteriBilgileriniYazdırma(Musteri bulunanMusteri)
         {
-            txtMusteriBilgileri.Text = bulunanMusteri.TCKN.ToString() + Environment.NewLine +
-                                       bulunanMusteri.ad + " " + bulunanMusteri.soyad + Environment.NewLine +
-                                       bulunanMusteri.musteriTuru;
+            txtMusteriBilgileri.Text = "TCKN: " + bulunanMusteri.TCKN.ToString() + Environment.NewLine +
+                                       "Ad Soyad: " + bulunanMusteri.ad + " " + bulunanMusteri.soyad + Environment.NewLine +
+                                       "Müşteri Türü: " + bulunanMusteri.musteriTuru;
         }
 
         private ulong hesapNo = 0;
@@ -74,7 +71,9 @@ namespace BankaProjesi
                 // hatalı
             }
 
-            txtMusteriBilgileri.Text = hesapAcilacakmusteri.TCKN + " TCKN'lu müşteriye " + hesapNo + " numaralı hesap açılmıştır.";
+            btnHesapAc.Hide();
+            lblHesapNo.Show();
+            lblHesapNo.Text = hesapNo.ToString();
         }
 
         private Hesap IlgiliMusteriyeHesapBilgileriniKaydetme(ulong hesapNumarasi, decimal tutar)
@@ -86,6 +85,11 @@ namespace BankaProjesi
             hesapAcilacakmusteri.MusteriyeHesapEkle(yeniHesap);
 
             return yeniHesap;
+        }
+
+        private void lblHesapNo_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

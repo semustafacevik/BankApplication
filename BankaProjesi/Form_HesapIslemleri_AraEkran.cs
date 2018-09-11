@@ -21,10 +21,8 @@ namespace BankaProjesi
             ButonAktivasyon_kapat();
 
             cmbHesNo.Enabled = false;
-
             lblGonHesNo.Hide();
             txtGondHesNo.Hide();
-
         }
 
         private void frmHesapIslemleri_Load(object sender, EventArgs e)
@@ -34,21 +32,25 @@ namespace BankaProjesi
 
         private void btnParayatir_Click(object sender, EventArgs e)
         {
-            this.Size = new Size(600, 350);
+            frmParaYatirmaCekme paraYatirma = new frmParaYatirmaCekme(secilenHesap, "parayatirma");
+            paraYatirma.Text = "PARA YATIRMA EKRANI";
+            paraYatirma.ShowDialog();
+        }
+
+        private void btnParaCek_Click(object sender, EventArgs e)
+        {
+            frmParaYatirmaCekme paraCekme = new frmParaYatirmaCekme(secilenHesap, "paracekme");
+            paraCekme.Text = "PARA ÇEKME EKRANI";
+            paraCekme.ShowDialog();
         }
 
         private ulong bulunacakMusteri = 0;
         private ulong secilenHesapno = 0;
+        private Hesap secilenHesap = null;
 
         private void btnHesBul_Click(object sender, EventArgs e)
         {
             bulunacakMusteri = Convert.ToUInt64(txtMusNo.Text);
-
-            cmbHesNo.Items.Clear();
-            cmbHesNo.Text = "Hesap Seçiniz";
-            cmbHesNo.Enabled = false;
-            ButonAktivasyon_kapat();
-            txtHesBilgileri.Clear();
 
             foreach (Musteri mevcutMusteriler in banka.Musteriler)
             {
@@ -60,6 +62,7 @@ namespace BankaProjesi
                     }
 
                     cmbHesNo.Enabled = true;
+                    btnHesBul.Enabled = false;
                     break;
                 }
             }
@@ -73,11 +76,11 @@ namespace BankaProjesi
             {
                 if (secilenHesapno == secilenHesap.hesapNumarasi)
                 {
-                    txtHesBilgileri.Text = "TCKN: " + secilenHesap.hangiMusteriyeait.TCKN + Environment.NewLine +
-                                           "Ad Soyad :" + secilenHesap.hangiMusteriyeait.ad + " " + secilenHesap.hangiMusteriyeait.soyad + Environment.NewLine +
-                                           secilenHesap.hesapNumarasi + " numaralı hesaptaki bakiye : " + Environment.NewLine + 
-                                           ">>> " + secilenHesap.bakiye + " ₺";
+                    this.secilenHesap = secilenHesap;
 
+                    txtHesBilgileri.Text = "TCKN: " + secilenHesap.hangiMusteriyeait.TCKN + Environment.NewLine +
+                                           "Ad Soyad:" + secilenHesap.hangiMusteriyeait.ad + " " + secilenHesap.hangiMusteriyeait.soyad + Environment.NewLine +
+                                           secilenHesap.hesapNumarasi + " Numaralı Hesaptaki Bakiye: " + secilenHesap.bakiye + " ₺";
                 }
 
                 ButonAktivasyon_ac();
@@ -91,6 +94,7 @@ namespace BankaProjesi
             btnParaCek.Enabled = true;
             btnHavale.Enabled = true;
             btnHesKapat.Enabled = true;
+            btnHesOzet.Enabled = true;
         }
 
         private void ButonAktivasyon_kapat()
@@ -99,6 +103,9 @@ namespace BankaProjesi
             btnParaCek.Enabled = false;
             btnHavale.Enabled = false;
             btnHesKapat.Enabled = false;
+            btnHesOzet.Enabled = false;
         }
+
+
     }
 }

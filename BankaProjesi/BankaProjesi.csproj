@@ -46,6 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Banka.cs" />
+    <Compile Include="Form_ParaYatirmaCekme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_ParaYatirmaCekme.Designer.cs">
+      <DependentUpon>Form_ParaYatirmaCekme.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_HesapIslemleri_AraEkran.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,9 @@
       <DependentUpon>Form_YeniHesap.cs</DependentUpon>
     </Compile>
     <Compile Include="Musteri_Ticari.cs" />
+    <EmbeddedResource Include="Form_ParaYatirmaCekme.resx">
+      <DependentUpon>Form_ParaYatirmaCekme.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_AnaEkran.resx">
       <DependentUpon>Form_AnaEkran.cs</DependentUpon>
     </EmbeddedResource>

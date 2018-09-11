@@ -16,12 +16,11 @@ namespace BankaProjesi
         public frmYeniMusteri()
         {
             InitializeComponent();
-            btnMusteriNumarasi.Hide();
+            lblMusteriNo.Hide();
         }
 
         ulong musteriNo = 0;
         Random randMusteriNo = new Random();
-
 
         private void btnMusteriEkle_Click(object sender, EventArgs e)
         {
@@ -48,9 +47,9 @@ namespace BankaProjesi
                 // hatalı
             }
 
-            btnMusteriNumarasi.Text = musteriNo.ToString();
+            lblMusteriNo.Text = musteriNo.ToString();
             btnMusteriEkle.Hide();
-            btnMusteriNumarasi.Show();
+            lblMusteriNo.Show();
 
             MusteriBilgileriniKaydet(musteriTCKN, musteriAdi, musteriSoyadi, musteriTelno, musteriTuru, musteriNo);
         }
@@ -67,11 +66,6 @@ namespace BankaProjesi
             }
         }
 
-        private void MusteriEklemeFormunuKapatma(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void MusteriBilgileriniKaydet(ulong musTCKN, string musAd, string musSoyad, ulong musTelno, string musTur, ulong musNo)
         {
             Musteri yeniMusteri = new Musteri
@@ -86,5 +80,9 @@ namespace BankaProjesi
             banka.BankayaMusteriEkle(yeniMusteri);
         }
 
+        private void lblMusteriNo_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
