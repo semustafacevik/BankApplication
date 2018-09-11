@@ -32,12 +32,13 @@ namespace BankaProjesi
                     MusteriBilgileriniYazdırma(arananMusteri);
                     btnHesapAc.Enabled = true;
                     hesapAcilacakmusteri = arananMusteri;
+                    break;
                 }
 
-                else
-                {
-                    txtMusteriBilgileri.Text = aranacakMusterino + " müşteri numarasına sahip herhangi bir müşteri bulunamadı.";
-                }
+                //else
+                //{
+                //    txtMusteriBilgileri.Text = aranacakMusterino + " müşteri numarasına sahip herhangi bir müşteri bulunamadı.";
+                //}
             }
         }
 
