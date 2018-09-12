@@ -19,16 +19,21 @@ namespace BankaProjesi
             lblMusteriNo.Hide();
         }
 
-        ulong musteriNo = 0;
+        ulong musteriTCKN;
+        string musteriAdi;
+        string musteriSoyadi;
+        ulong musteriTelno;
+        string musteriTuru;
+        ulong musteriNo;
         Random randMusteriNo = new Random();
 
         private void btnMusteriEkle_Click(object sender, EventArgs e)
         {
-            ulong musteriTCKN = Convert.ToUInt64(txtTCKN.Text);
-            string musteriAdi = txtAd.Text;
-            string musteriSoyadi = txtSoyad.Text;
-            ulong musteriTelno = Convert.ToUInt64(txtTelNo.Text);
-            string musteriTuru = cmbMusTur.SelectedItem.ToString();
+            musteriTCKN = Convert.ToUInt64(txtTCKN.Text);
+            musteriAdi = txtAd.Text;
+            musteriSoyadi = txtSoyad.Text;
+            musteriTelno = Convert.ToUInt64(txtTelNo.Text);
+            musteriTuru = cmbMusTur.SelectedItem.ToString();
 
             if (musteriTuru == "Bireysel Müşteri")
             {
@@ -51,7 +56,7 @@ namespace BankaProjesi
             btnMusteriEkle.Hide();
             lblMusteriNo.Show();
 
-            MusteriBilgileriniKaydet(musteriTCKN, musteriAdi, musteriSoyadi, musteriTelno, musteriTuru, musteriNo);
+            MusteriBilgileriniKaydetme();
         }
 
         private void FarkliMusteriNumarasiUretme(int minDeger, int maxDeger)
@@ -66,19 +71,19 @@ namespace BankaProjesi
             }
         }
 
-        private void MusteriBilgileriniKaydet(ulong musTCKN, string musAd, string musSoyad, ulong musTelno, string musTur, ulong musNo)
+        private void MusteriBilgileriniKaydetme()
         {
-            switch (musTur)
+            switch (musteriTuru)
             {
                 case "Bireysel Müşteri":
                     Musteri_Bireysel yeniBirMusteri = new Musteri_Bireysel
                     {
-                        TCKN = musTCKN,
-                        ad = musAd,
-                        soyad = musSoyad,
-                        telNo = musTelno,
-                        musteriTuru = musTur,
-                        musteriNosu = musNo
+                        TCKN = musteriTCKN,
+                        ad = musteriAdi,
+                        soyad = musteriSoyadi,
+                        telNo = musteriTelno,
+                        musteriTuru = musteriTuru,
+                        musteriNosu = musteriNo
                     };
                     banka.BankayaMusteriEkle(yeniBirMusteri);
                     break;
@@ -86,12 +91,12 @@ namespace BankaProjesi
                 case "Ticari Müşteri":
                     Musteri_Ticari yeniTicMusteri = new Musteri_Ticari
                     {
-                        TCKN = musTCKN,
-                        ad = musAd,
-                        soyad = musSoyad,
-                        telNo = musTelno,
-                        musteriTuru = musTur,
-                        musteriNosu = musNo
+                        TCKN = musteriTCKN,
+                        ad = musteriAdi,
+                        soyad = musteriSoyadi,
+                        telNo = musteriTelno,
+                        musteriTuru = musteriTuru,
+                        musteriNosu = musteriNo
                     };
                     banka.BankayaMusteriEkle(yeniTicMusteri);
                     break;
@@ -101,8 +106,6 @@ namespace BankaProjesi
                     break;
             }
         }
-
-            
 
         private void lblMusteriNo_Click(object sender, EventArgs e)
         {

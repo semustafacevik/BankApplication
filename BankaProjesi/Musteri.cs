@@ -90,7 +90,7 @@ namespace BankaProjesi
                 if (yatirilacakMiktar > 100)
                     return 10;  // yatirilacak miktar 100' den fazlaysa 
 
-                else
+                else  ////// 50 + 80 ??
                     return 11; // yatiralacak miktar 100' den azsa
             }
 

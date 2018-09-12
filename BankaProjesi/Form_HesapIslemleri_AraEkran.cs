@@ -19,11 +19,10 @@ namespace BankaProjesi
             InitializeComponent();
 
             ButonAktivasyon_kapat();
-
             cmbHesNo.Enabled = false;
-            lblGonHesNo.Hide();
-            txtGondHesNo.Hide();
         }
+
+        Hesap secilenHesap = null;
 
         private void btnParayatir_Click(object sender, EventArgs e)
         {
@@ -39,48 +38,37 @@ namespace BankaProjesi
             paraCekme.ShowDialog();
         }
 
-        private ulong bulunacakMusteri = 0;
-        private ulong secilenHesapno = 0;
-        private Hesap secilenHesap = null;
 
         private void btnHesBul_Click(object sender, EventArgs e)
         {
-            bulunacakMusteri = Convert.ToUInt64(txtMusNo.Text);
+            ulong bulunacakMusteriNo = Convert.ToUInt64(txtMusNo.Text);
 
-            foreach (Musteri mevcutMusteriler in banka.Musteriler)
+            Musteri bulunacakMusteri = banka.MusteriBul(bulunacakMusteriNo);
+
+            if (bulunacakMusteri != null)
             {
-                if (bulunacakMusteri == mevcutMusteriler.musteriNosu)
+                foreach (Hesap ilgiliMusHesaplari in bulunacakMusteri.MusterininHesaplari)
                 {
-                    foreach (Hesap ilgiliMusterininhesaplari in mevcutMusteriler.MusterininHesaplari)
-                    {
-                        cmbHesNo.Items.Add(ilgiliMusterininhesaplari.hesapNumarasi);
-                    }
-
-                    cmbHesNo.Enabled = true;
-                    btnHesBul.Enabled = false;
-                    break;
+                    cmbHesNo.Items.Add(ilgiliMusHesaplari.hesapNumarasi);
                 }
+
+                cmbHesNo.Enabled = true;
+                btnHesBul.Enabled = false;
             }
+
         }
 
         private void cmbHesaplar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            secilenHesapno = Convert.ToUInt64(cmbHesNo.SelectedItem);
+            ulong secilenHesapNo = Convert.ToUInt64(cmbHesNo.SelectedItem);
 
-            foreach (Hesap secilenHesap in banka.Hesaplar)
-            {
-                if (secilenHesapno == secilenHesap.hesapNumarasi)
-                {
-                    this.secilenHesap = secilenHesap;
+            secilenHesap = banka.HesapBul(secilenHesapNo);
 
-                    txtHesBilgileri.Text = "TCKN: " + secilenHesap.hangiMusteriyeait.TCKN + Environment.NewLine +
-                                           "Ad Soyad:" + secilenHesap.hangiMusteriyeait.ad + " " + secilenHesap.hangiMusteriyeait.soyad + Environment.NewLine +
-                                           secilenHesap.hesapNumarasi + " Numaralı Hesaptaki Bakiye: " + secilenHesap.bakiye + " ₺";
-                }
+            txtHesBilgileri.Text = "TCKN: " + secilenHesap.hangiMusteriyeait.TCKN + Environment.NewLine +
+                                   "Ad Soyad:" + secilenHesap.hangiMusteriyeait.ad + " " + secilenHesap.hangiMusteriyeait.soyad + Environment.NewLine +
+                                   secilenHesap.hesapNumarasi + " Numaralı Hesaptaki Bakiye: " + secilenHesap.bakiye + " ₺";
 
-                ButonAktivasyon_ac();
-            }
-
+            ButonAktivasyon_ac();
         }
 
         private void ButonAktivasyon_ac()
@@ -103,7 +91,9 @@ namespace BankaProjesi
 
         private void btnHavale_Click(object sender, EventArgs e)
         {
-
+            frm_Havale havale = new frm_Havale(secilenHesap);
+            havale.banka = banka;
+            havale.ShowDialog();
         }
     }
 }

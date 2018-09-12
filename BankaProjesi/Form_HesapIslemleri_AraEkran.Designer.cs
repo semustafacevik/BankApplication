@@ -38,13 +38,6 @@
             this.btnHavale = new System.Windows.Forms.Button();
             this.btnHesKapat = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnOnayla = new System.Windows.Forms.Button();
-            this.txtGondHesNo = new System.Windows.Forms.TextBox();
-            this.lblGonHesNo = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtTutar = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtDurumBilgisi = new System.Windows.Forms.TextBox();
             this.cmbHesNo = new System.Windows.Forms.ComboBox();
             this.btnHesOzet = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -67,7 +60,7 @@
             this.txtMusNo.MaxLength = 6;
             this.txtMusNo.Multiline = true;
             this.txtMusNo.Name = "txtMusNo";
-            this.txtMusNo.Size = new System.Drawing.Size(176, 32);
+            this.txtMusNo.Size = new System.Drawing.Size(164, 32);
             this.txtMusNo.TabIndex = 12;
             // 
             // label1
@@ -87,7 +80,7 @@
             this.txtHesBilgileri.MaxLength = 7;
             this.txtHesBilgileri.Multiline = true;
             this.txtHesBilgileri.Name = "txtHesBilgileri";
-            this.txtHesBilgileri.Size = new System.Drawing.Size(449, 104);
+            this.txtHesBilgileri.Size = new System.Drawing.Size(432, 104);
             this.txtHesBilgileri.TabIndex = 12;
             // 
             // label2
@@ -103,7 +96,7 @@
             // btnParaCek
             // 
             this.btnParaCek.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnParaCek.Location = new System.Drawing.Point(223, 66);
+            this.btnParaCek.Location = new System.Drawing.Point(211, 66);
             this.btnParaCek.Name = "btnParaCek";
             this.btnParaCek.Size = new System.Drawing.Size(119, 32);
             this.btnParaCek.TabIndex = 13;
@@ -114,7 +107,7 @@
             // btnParaYatir
             // 
             this.btnParaYatir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnParaYatir.Location = new System.Drawing.Point(223, 31);
+            this.btnParaYatir.Location = new System.Drawing.Point(211, 31);
             this.btnParaYatir.Name = "btnParaYatir";
             this.btnParaYatir.Size = new System.Drawing.Size(119, 32);
             this.btnParaYatir.TabIndex = 13;
@@ -125,7 +118,7 @@
             // btnHavale
             // 
             this.btnHavale.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnHavale.Location = new System.Drawing.Point(223, 102);
+            this.btnHavale.Location = new System.Drawing.Point(211, 102);
             this.btnHavale.Name = "btnHavale";
             this.btnHavale.Size = new System.Drawing.Size(119, 32);
             this.btnHavale.TabIndex = 13;
@@ -136,7 +129,7 @@
             // btnHesKapat
             // 
             this.btnHesKapat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnHesKapat.Location = new System.Drawing.Point(348, 83);
+            this.btnHesKapat.Location = new System.Drawing.Point(336, 83);
             this.btnHesKapat.Name = "btnHesKapat";
             this.btnHesKapat.Size = new System.Drawing.Size(119, 32);
             this.btnHesKapat.TabIndex = 13;
@@ -153,83 +146,13 @@
             this.label5.TabIndex = 14;
             this.label5.Text = "Müşteri Numarası";
             // 
-            // btnOnayla
-            // 
-            this.btnOnayla.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnOnayla.Location = new System.Drawing.Point(618, 103);
-            this.btnOnayla.Name = "btnOnayla";
-            this.btnOnayla.Size = new System.Drawing.Size(119, 32);
-            this.btnOnayla.TabIndex = 18;
-            this.btnOnayla.Text = "ONAYLA";
-            this.btnOnayla.UseVisualStyleBackColor = true;
-            // 
-            // txtGondHesNo
-            // 
-            this.txtGondHesNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtGondHesNo.Location = new System.Drawing.Point(541, 30);
-            this.txtGondHesNo.MaxLength = 7;
-            this.txtGondHesNo.Multiline = true;
-            this.txtGondHesNo.Name = "txtGondHesNo";
-            this.txtGondHesNo.Size = new System.Drawing.Size(208, 33);
-            this.txtGondHesNo.TabIndex = 16;
-            // 
-            // lblGonHesNo
-            // 
-            this.lblGonHesNo.AutoSize = true;
-            this.lblGonHesNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblGonHesNo.Location = new System.Drawing.Point(536, 10);
-            this.lblGonHesNo.Name = "lblGonHesNo";
-            this.lblGonHesNo.Size = new System.Drawing.Size(201, 17);
-            this.lblGonHesNo.TabIndex = 20;
-            this.lblGonHesNo.Text = "Gönderilecek Hesap Numarası";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label9.Location = new System.Drawing.Point(538, 74);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(42, 17);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "Tutar";
-            // 
-            // txtTutar
-            // 
-            this.txtTutar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtTutar.Location = new System.Drawing.Point(528, 104);
-            this.txtTutar.MaxLength = 7;
-            this.txtTutar.Multiline = true;
-            this.txtTutar.Name = "txtTutar";
-            this.txtTutar.Size = new System.Drawing.Size(84, 32);
-            this.txtTutar.TabIndex = 17;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(536, 170);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 17);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Durum Bilgisi";
-            // 
-            // txtDurumBilgisi
-            // 
-            this.txtDurumBilgisi.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtDurumBilgisi.Location = new System.Drawing.Point(539, 190);
-            this.txtDurumBilgisi.MaxLength = 7;
-            this.txtDurumBilgisi.Multiline = true;
-            this.txtDurumBilgisi.Name = "txtDurumBilgisi";
-            this.txtDurumBilgisi.Size = new System.Drawing.Size(208, 118);
-            this.txtDurumBilgisi.TabIndex = 12;
-            // 
             // cmbHesNo
             // 
             this.cmbHesNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.cmbHesNo.FormattingEnabled = true;
             this.cmbHesNo.Location = new System.Drawing.Point(23, 102);
             this.cmbHesNo.Name = "cmbHesNo";
-            this.cmbHesNo.Size = new System.Drawing.Size(176, 33);
+            this.cmbHesNo.Size = new System.Drawing.Size(164, 33);
             this.cmbHesNo.Sorted = true;
             this.cmbHesNo.TabIndex = 23;
             this.cmbHesNo.Text = "Hesap Seçiniz";
@@ -238,7 +161,7 @@
             // btnHesOzet
             // 
             this.btnHesOzet.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnHesOzet.Location = new System.Drawing.Point(348, 45);
+            this.btnHesOzet.Location = new System.Drawing.Point(336, 45);
             this.btnHesOzet.Name = "btnHesOzet";
             this.btnHesOzet.Size = new System.Drawing.Size(119, 32);
             this.btnHesOzet.TabIndex = 13;
@@ -249,21 +172,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(810, 298);
+            this.ClientSize = new System.Drawing.Size(473, 298);
             this.Controls.Add(this.cmbHesNo);
-            this.Controls.Add(this.btnOnayla);
-            this.Controls.Add(this.txtGondHesNo);
-            this.Controls.Add(this.txtTutar);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.lblGonHesNo);
             this.Controls.Add(this.btnHesOzet);
             this.Controls.Add(this.btnHesKapat);
             this.Controls.Add(this.btnHavale);
             this.Controls.Add(this.btnParaYatir);
             this.Controls.Add(this.btnParaCek);
             this.Controls.Add(this.btnHesBul);
-            this.Controls.Add(this.txtDurumBilgisi);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtHesBilgileri);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtMusNo);
@@ -291,13 +207,6 @@
         private System.Windows.Forms.Button btnHavale;
         private System.Windows.Forms.Button btnHesKapat;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnOnayla;
-        private System.Windows.Forms.TextBox txtGondHesNo;
-        private System.Windows.Forms.Label lblGonHesNo;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtTutar;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtDurumBilgisi;
         private System.Windows.Forms.ComboBox cmbHesNo;
         private System.Windows.Forms.Button btnHesOzet;
     }
