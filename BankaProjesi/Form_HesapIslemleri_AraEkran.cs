@@ -25,11 +25,6 @@ namespace BankaProjesi
             txtGondHesNo.Hide();
         }
 
-        private void frmHesapIslemleri_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnParayatir_Click(object sender, EventArgs e)
         {
             frmParaYatirmaCekme paraYatirma = new frmParaYatirmaCekme(secilenHesap, "parayatirma");
@@ -106,6 +101,9 @@ namespace BankaProjesi
             btnHesOzet.Enabled = false;
         }
 
+        private void btnHavale_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

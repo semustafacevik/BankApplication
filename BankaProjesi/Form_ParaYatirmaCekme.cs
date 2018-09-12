@@ -13,6 +13,7 @@ namespace BankaProjesi
     public partial class frmParaYatirmaCekme : Form
     {
         private Hesap hesap;
+        private Musteri ilgiliMusteri;
         private string islemTuru;
 
         public frmParaYatirmaCekme(Hesap hesap, string islemTuru)
@@ -20,6 +21,7 @@ namespace BankaProjesi
             InitializeComponent();
             this.hesap = hesap;
             this.islemTuru = islemTuru;
+            ilgiliMusteri = hesap.hangiMusteriyeait;
         }
 
         decimal girilenTutar = 0;
@@ -35,11 +37,11 @@ namespace BankaProjesi
             switch (islemTuru)
             {
                 case "parayatirma":
-                    mesajKodu = hesap.HesabaParaYatir(girilenTutar);
+                    mesajKodu = ilgiliMusteri.HesabaParaYatir(hesap,girilenTutar);
                     break;
 
                 case "paracekme":
-                    mesajKodu = hesap.HesaptanParaCek(girilenTutar);
+                    mesajKodu = ilgiliMusteri.HesaptanParaCek(hesap,girilenTutar);
                     break;
 
                 default:
@@ -51,7 +53,7 @@ namespace BankaProjesi
                                     ">>> " + hesap.bakiye + " ₺ (Ek hesaptaki tutar: " + hesap.ekHesap + " ₺)";
 
             btnOnayla.Enabled = false;
-            this.Size = new Size(400, 340);
+            this.Size = new Size(400, 390);
         }            
 
         private void MesajKodunaGoreBilgilendirme(int gelenMesajKodu)

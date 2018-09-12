@@ -131,6 +131,7 @@
             this.btnHavale.TabIndex = 13;
             this.btnHavale.Text = "HAVALE";
             this.btnHavale.UseVisualStyleBackColor = true;
+            this.btnHavale.Click += new System.EventHandler(this.btnHavale_Click);
             // 
             // btnHesKapat
             // 
@@ -273,7 +274,6 @@
             this.Name = "frmHesapIslemleri";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "HESAP İŞLEMLERİ EKRANI";
-            this.Load += new System.EventHandler(this.frmHesapIslemleri_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

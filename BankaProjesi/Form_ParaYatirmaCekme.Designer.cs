@@ -71,7 +71,7 @@
             this.txtDurumBilgisi.Location = new System.Drawing.Point(18, 120);
             this.txtDurumBilgisi.Multiline = true;
             this.txtDurumBilgisi.Name = "txtDurumBilgisi";
-            this.txtDurumBilgisi.Size = new System.Drawing.Size(346, 166);
+            this.txtDurumBilgisi.Size = new System.Drawing.Size(346, 219);
             this.txtDurumBilgisi.TabIndex = 2;
             // 
             // label3
@@ -88,7 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(299, 95);
+            this.ClientSize = new System.Drawing.Size(384, 101);
             this.Controls.Add(this.btnOnayla);
             this.Controls.Add(this.txtTutar);
             this.Controls.Add(this.label9);

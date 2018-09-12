@@ -68,17 +68,41 @@ namespace BankaProjesi
 
         private void MusteriBilgileriniKaydet(ulong musTCKN, string musAd, string musSoyad, ulong musTelno, string musTur, ulong musNo)
         {
-            Musteri yeniMusteri = new Musteri
+            switch (musTur)
             {
-                TCKN = musTCKN,
-                ad = musAd,
-                soyad = musSoyad,
-                telNo = musTelno,
-                musteriTuru = musTur,
-                musteriNosu = musNo
-            };
-            banka.BankayaMusteriEkle(yeniMusteri);
+                case "Bireysel Müşteri":
+                    Musteri_Bireysel yeniBirMusteri = new Musteri_Bireysel
+                    {
+                        TCKN = musTCKN,
+                        ad = musAd,
+                        soyad = musSoyad,
+                        telNo = musTelno,
+                        musteriTuru = musTur,
+                        musteriNosu = musNo
+                    };
+                    banka.BankayaMusteriEkle(yeniBirMusteri);
+                    break;
+
+                case "Ticari Müşteri":
+                    Musteri_Ticari yeniTicMusteri = new Musteri_Ticari
+                    {
+                        TCKN = musTCKN,
+                        ad = musAd,
+                        soyad = musSoyad,
+                        telNo = musTelno,
+                        musteriTuru = musTur,
+                        musteriNosu = musNo
+                    };
+                    banka.BankayaMusteriEkle(yeniTicMusteri);
+                    break;
+
+                default:
+                    // hatalı
+                    break;
+            }
         }
+
+            
 
         private void lblMusteriNo_Click(object sender, EventArgs e)
         {
