@@ -55,14 +55,14 @@ namespace BankaProjesi
             if(hesapAcilacakmusteri.musteriTuru == "Bireysel Müşteri")
             {
                 hesapNo = Convert.ToUInt64(randHesapNo.Next(1000000, 5000000));
-                Hesap yeniHesap = IlgiliMusteriyeHesapBilgileriniKaydetme(hesapNo, 50);
+                Hesap yeniHesap = IlgiliMusteriyeHesapBilgileriniKaydetme(hesapNo);
                 banka.BankayaHesapEkle(yeniHesap);
             } 
 
             else if(hesapAcilacakmusteri.musteriTuru == "Ticari Müşteri")
             {
                 hesapNo = Convert.ToUInt64(randHesapNo.Next(5000000, 10000000));
-                Hesap yeniHesap = IlgiliMusteriyeHesapBilgileriniKaydetme(hesapNo, 100);
+                Hesap yeniHesap = IlgiliMusteriyeHesapBilgileriniKaydetme(hesapNo);
                 banka.BankayaHesapEkle(yeniHesap);
             }
 
@@ -76,11 +76,11 @@ namespace BankaProjesi
             lblHesapNo.Text = hesapNo.ToString();
         }
 
-        private Hesap IlgiliMusteriyeHesapBilgileriniKaydetme(ulong hesapNumarasi, decimal tutar)
+        private Hesap IlgiliMusteriyeHesapBilgileriniKaydetme(ulong hesapNumarasi)
         {
             Hesap yeniHesap = new Hesap();
             yeniHesap.hesapNumarasi = hesapNo;
-            yeniHesap.ekHesap = tutar;
+            yeniHesap.ekHesap = 100;
             yeniHesap.hangiMusteriyeait = hesapAcilacakmusteri;
             hesapAcilacakmusteri.MusteriyeHesapEkle(yeniHesap);
 
