@@ -41,11 +41,16 @@ namespace BankaProjesi
                     ilgiliHesap.ekHesap = 100;
                     return gelenOnaykodu;
 
-                case 11:
-                    ilgiliHesap.ekHesap += yatirilacakMiktar;
+                case 11:                   
+                    ilgiliHesap.bakiye = (ilgiliHesap.ekHesap + yatirilacakMiktar) - 100;
+                    ilgiliHesap.ekHesap = 100;
                     return gelenOnaykodu;
 
                 case 12:
+                    ilgiliHesap.ekHesap += yatirilacakMiktar;
+                    return gelenOnaykodu;
+
+                case 13:
                     ilgiliHesap.bakiye += yatirilacakMiktar;
                     return gelenOnaykodu;
 
@@ -90,12 +95,15 @@ namespace BankaProjesi
                 if (yatirilacakMiktar > 100)
                     return 10;  // yatirilacak miktar 100' den fazlaysa 
 
-                else  ////// 50 + 80 ??
-                    return 11; // yatiralacak miktar 100' den azsa
+                else if (kontrolEdilecekhesap.ekHesap + yatirilacakMiktar > 100)
+                    return 11;
+
+                else
+                    return 12; // yatiralacak miktar 100' den azsa
             }
 
             else // ek hesaptaki miktar 100 ise
-                return 12;
+                return 13;
         }
 
         public int ParaCekmeKontrol(Hesap kontrolEdilecekhesap, decimal cekilecekMiktar)
@@ -120,6 +128,17 @@ namespace BankaProjesi
         }
 
 
+        public virtual bool ParaHavale(Hesap gonderenHesap, Hesap alacakHesap, decimal gonderilecekMiktar)
+        {
+            if (gonderenHesap.bakiye >= gonderilecekMiktar)
+            {
+                gonderenHesap.bakiye -= gonderilecekMiktar;
+                return true;
+            }
+
+            else
+                return false;
+        }
 
     }
 }

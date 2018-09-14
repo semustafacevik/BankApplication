@@ -80,7 +80,7 @@
             this.txtHesBilgileri.MaxLength = 7;
             this.txtHesBilgileri.Multiline = true;
             this.txtHesBilgileri.Name = "txtHesBilgileri";
-            this.txtHesBilgileri.Size = new System.Drawing.Size(432, 104);
+            this.txtHesBilgileri.Size = new System.Drawing.Size(447, 104);
             this.txtHesBilgileri.TabIndex = 12;
             // 
             // label2
@@ -96,7 +96,7 @@
             // btnParaCek
             // 
             this.btnParaCek.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnParaCek.Location = new System.Drawing.Point(211, 66);
+            this.btnParaCek.Location = new System.Drawing.Point(226, 66);
             this.btnParaCek.Name = "btnParaCek";
             this.btnParaCek.Size = new System.Drawing.Size(119, 32);
             this.btnParaCek.TabIndex = 13;
@@ -107,7 +107,7 @@
             // btnParaYatir
             // 
             this.btnParaYatir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnParaYatir.Location = new System.Drawing.Point(211, 31);
+            this.btnParaYatir.Location = new System.Drawing.Point(226, 31);
             this.btnParaYatir.Name = "btnParaYatir";
             this.btnParaYatir.Size = new System.Drawing.Size(119, 32);
             this.btnParaYatir.TabIndex = 13;
@@ -118,7 +118,7 @@
             // btnHavale
             // 
             this.btnHavale.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnHavale.Location = new System.Drawing.Point(211, 102);
+            this.btnHavale.Location = new System.Drawing.Point(226, 102);
             this.btnHavale.Name = "btnHavale";
             this.btnHavale.Size = new System.Drawing.Size(119, 32);
             this.btnHavale.TabIndex = 13;
@@ -129,7 +129,7 @@
             // btnHesKapat
             // 
             this.btnHesKapat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnHesKapat.Location = new System.Drawing.Point(336, 83);
+            this.btnHesKapat.Location = new System.Drawing.Point(351, 83);
             this.btnHesKapat.Name = "btnHesKapat";
             this.btnHesKapat.Size = new System.Drawing.Size(119, 32);
             this.btnHesKapat.TabIndex = 13;
@@ -161,7 +161,7 @@
             // btnHesOzet
             // 
             this.btnHesOzet.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnHesOzet.Location = new System.Drawing.Point(336, 45);
+            this.btnHesOzet.Location = new System.Drawing.Point(351, 45);
             this.btnHesOzet.Name = "btnHesOzet";
             this.btnHesOzet.Size = new System.Drawing.Size(119, 32);
             this.btnHesOzet.TabIndex = 13;
@@ -172,7 +172,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 298);
+            this.ClientSize = new System.Drawing.Size(492, 298);
             this.Controls.Add(this.cmbHesNo);
             this.Controls.Add(this.btnHesOzet);
             this.Controls.Add(this.btnHesKapat);

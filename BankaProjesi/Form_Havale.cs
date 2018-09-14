@@ -39,10 +39,19 @@ namespace BankaProjesi
         {
             decimal girilenTutar = Convert.ToDecimal(txtTutar.Text);
 
-            gonderenHesap.hangiMusteriyeait.HesaptanParaCek(gonderenHesap, girilenTutar);
-            alanHesap.hangiMusteriyeait.HesabaParaYatir(alanHesap, girilenTutar);
+            bool havaleOnay = gonderenHesap.hangiMusteriyeait.ParaHavale(gonderenHesap, alanHesap, girilenTutar);
 
-            txtDurumBilgisi.Text = "Gond: " + gonderenHesap.bakiye + "    Alan: " + alanHesap.bakiye;
+            if (havaleOnay)
+            {
+                txtDurumBilgisi.Text = "Havale işlemi gerçekleşti. İşlem sonrası toplam bakiye: " + Environment.NewLine + 
+                                       ">>> " + gonderenHesap.bakiye + " ₺";
+            }
+
+            else
+            {
+                txtDurumBilgisi.Text = "Yetersiz bakiye. İşlem gerçekleştirelemedi. Toplam bakiye: " + Environment.NewLine +
+                                       ">>> " + gonderenHesap.bakiye + " ₺";
+            }
         }
     }
 }

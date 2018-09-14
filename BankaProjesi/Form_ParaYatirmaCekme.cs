@@ -60,20 +60,20 @@ namespace BankaProjesi
         {
             switch (gelenMesajKodu)
             {
-                case 10:
+                case 10 | 11:
                     txtDurumBilgisi.Text += "Ek hesaptaki miktar tam olmadığı için yatırılan parayla ilk ek hesap tamamlandı, arta kalan para da bakiyeye aktarıldı.";
                     break;
 
-                case 11:
+                case 12:
                     txtDurumBilgisi.Text += "Ek hesaptaki miktar tam olmadığı için yatırılan para ek hesaba yatırıldı.";
                     break;
 
-                case 12:
+                case 13:
                     txtDurumBilgisi.Text += "Para yatırma işleminiz gerçekleşti.";
                     break;
 
                 case 20:
-                    txtDurumBilgisi.Text += "Günlük para çekme limitini aştınız. İşlem gerçekleştirelemedi. ";
+                    txtDurumBilgisi.Text += "Günlük para çekme limitiniz 750 ₺'dir. İşlem gerçekleştirelemedi. ";
                     break;
 
                 case 21:
