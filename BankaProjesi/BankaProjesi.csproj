@@ -52,6 +52,12 @@
     <Compile Include="Form_Havale.Designer.cs">
       <DependentUpon>Form_Havale.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_HesapOzeti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_HesapOzeti.Designer.cs">
+      <DependentUpon>Form_HesapOzeti.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_ParaYatirmaCekme.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +70,7 @@
     <Compile Include="Form_HesapIslemleri_AraEkran.Designer.cs">
       <DependentUpon>Form_HesapIslemleri_AraEkran.cs</DependentUpon>
     </Compile>
+    <Compile Include="HesapOzeti.cs" />
     <Compile Include="Musteri_Bireysel.cs" />
     <Compile Include="Form_AnaEkran.cs">
       <SubType>Form</SubType>
@@ -90,6 +97,9 @@
     <Compile Include="Musteri_Ticari.cs" />
     <EmbeddedResource Include="Form_Havale.resx">
       <DependentUpon>Form_Havale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_HesapOzeti.resx">
+      <DependentUpon>Form_HesapOzeti.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_ParaYatirmaCekme.resx">
       <DependentUpon>Form_ParaYatirmaCekme.cs</DependentUpon>

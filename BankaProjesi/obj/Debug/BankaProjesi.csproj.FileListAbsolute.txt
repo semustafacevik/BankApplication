@@ -12,4 +12,5 @@ C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\obj\Debug\BankaProj
 C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\obj\Debug\BankaProjesi.frmYeniHesap.resources
 C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\obj\Debug\BankaProjesi.frmHesapIslemleri.resources
 C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\obj\Debug\BankaProjesi.frmParaYatirmaCekme.resources
-C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\obj\Debug\BankaProjesi.frm_Havale.resources
+C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\obj\Debug\BankaProjesi.frmHavale.resources
+C:\Users\MustafaCevik\source\repos\BankaProjesi\BankaProjesi\obj\Debug\BankaProjesi.frmHesapOzeti.resources

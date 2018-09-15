@@ -27,6 +27,11 @@ namespace BankaProjesi
             Hesaplar.Add(yeniHesap);
         }
 
+        public void BankadanHesapSil(Hesap silinecekHesap)
+        {
+            Hesaplar.Remove(silinecekHesap);
+        }
+
         public Musteri MusteriBul(ulong musteriNumarasi)
         {
             Musteri arananMusteri;
@@ -41,7 +46,6 @@ namespace BankaProjesi
             }
             return null;
         }
-
 
         public Hesap HesapBul(ulong hesapNumarasi)
         {

@@ -88,7 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(413, 102);
+            this.ClientSize = new System.Drawing.Size(414, 94);
             this.Controls.Add(this.btnOnayla);
             this.Controls.Add(this.txtTutar);
             this.Controls.Add(this.label9);

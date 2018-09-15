@@ -80,7 +80,7 @@
             this.txtHesBilgileri.MaxLength = 7;
             this.txtHesBilgileri.Multiline = true;
             this.txtHesBilgileri.Name = "txtHesBilgileri";
-            this.txtHesBilgileri.Size = new System.Drawing.Size(447, 104);
+            this.txtHesBilgileri.Size = new System.Drawing.Size(447, 145);
             this.txtHesBilgileri.TabIndex = 12;
             // 
             // label2
@@ -135,6 +135,7 @@
             this.btnHesKapat.TabIndex = 13;
             this.btnHesKapat.Text = "HESABI KAPAT";
             this.btnHesKapat.UseVisualStyleBackColor = true;
+            this.btnHesKapat.Click += new System.EventHandler(this.btnHesKapat_Click);
             // 
             // label5
             // 
@@ -167,12 +168,13 @@
             this.btnHesOzet.TabIndex = 13;
             this.btnHesOzet.Text = "HESAP ÖZETİ";
             this.btnHesOzet.UseVisualStyleBackColor = true;
+            this.btnHesOzet.Click += new System.EventHandler(this.btnHesOzet_Click);
             // 
             // frmHesapIslemleri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 298);
+            this.ClientSize = new System.Drawing.Size(492, 338);
             this.Controls.Add(this.cmbHesNo);
             this.Controls.Add(this.btnHesOzet);
             this.Controls.Add(this.btnHesKapat);

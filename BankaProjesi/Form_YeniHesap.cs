@@ -20,9 +20,11 @@ namespace BankaProjesi
             lblHesapNo.Hide();
         }
 
+        Hesap yeniHesap = null;
         Musteri bulunacakMusteri = null;
         ulong hesapNo;
         Random randHesapNo = new Random();
+        DateTime islemTarihi;
 
         private void btnMusBul_Click(object sender, EventArgs e)
         {
@@ -47,7 +49,8 @@ namespace BankaProjesi
       
         private void btnHesapAc_Click(object sender, EventArgs e)
         {
-            if(bulunacakMusteri.musteriTuru == "Bireysel Müşteri")
+            islemTarihi = DateTime.Now;
+            if (bulunacakMusteri.musteriTuru == "Bireysel Müşteri")
             {
                 hesapNo = Convert.ToUInt64(randHesapNo.Next(1000000, 5000000));
                 FarkliHesapNumarasiUretme(1000000, 5000000);
@@ -69,16 +72,17 @@ namespace BankaProjesi
             btnHesapAc.Hide();
             lblHesapNo.Show();
             lblHesapNo.Text = hesapNo.ToString();
+
+            HesapOzeti hesapOzeti = new HesapOzeti(yeniHesap, "Hesap Açma", 0, islemTarihi);
+            yeniHesap.HesapOzetiEkle(hesapOzeti);
         }
 
         private void HesapBilgileriniKaydetme()
         {
-            Hesap yeniHesap = new Hesap
-            {
-                hesapNumarasi = hesapNo,
-                ekHesap = 100,
-                hangiMusteriyeait = bulunacakMusteri
-            };
+            yeniHesap = new Hesap();
+            yeniHesap.hesapNumarasi = hesapNo;
+            yeniHesap.ekHesap = 100;
+            yeniHesap.hangiMusteriyeait = bulunacakMusteri;
             bulunacakMusteri.MusteriyeHesapEkle(yeniHesap);
             banka.BankayaHesapEkle(yeniHesap);
         }

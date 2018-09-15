@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace BankaProjesi
 {
-    public partial class frm_Havale : Form
+    public partial class frmHavale : Form
     {
         public Banka banka;
         private Hesap gonderenHesap;
         private Hesap alanHesap;
 
-        public frm_Havale(Hesap gonderenHesap)
+        public frmHavale(Hesap gonderenHesap)
         {
             InitializeComponent();
 

@@ -38,7 +38,6 @@ namespace BankaProjesi
             paraCekme.ShowDialog();
         }
 
-
         private void btnHesBul_Click(object sender, EventArgs e)
         {
             ulong bulunacakMusteriNo = Convert.ToUInt64(txtMusNo.Text);
@@ -64,11 +63,14 @@ namespace BankaProjesi
 
             secilenHesap = banka.HesapBul(secilenHesapNo);
 
-            txtHesBilgileri.Text = "TCKN: " + secilenHesap.hangiMusteriyeait.TCKN + Environment.NewLine +
-                                   "Ad Soyad:" + secilenHesap.hangiMusteriyeait.ad + " " + secilenHesap.hangiMusteriyeait.soyad + Environment.NewLine +
-                                   secilenHesap.hesapNumarasi + " Numaralı Hesaptaki Bakiye: " + secilenHesap.bakiye + " ₺";
-
-            ButonAktivasyon_ac();
+            if (secilenHesap != null)
+            {
+                txtHesBilgileri.Text = "TCKN: " + secilenHesap.hangiMusteriyeait.TCKN + Environment.NewLine +
+                                       "Ad Soyad:" + secilenHesap.hangiMusteriyeait.ad + " " + secilenHesap.hangiMusteriyeait.soyad + Environment.NewLine +
+                                       secilenHesap.hesapNumarasi + " Numaralı Hesaptaki Bakiye: " + secilenHesap.bakiye + " ₺";
+                ButonAktivasyon_ac();
+            }
+            
         }
 
         private void ButonAktivasyon_ac()
@@ -91,9 +93,41 @@ namespace BankaProjesi
 
         private void btnHavale_Click(object sender, EventArgs e)
         {
-            frm_Havale havale = new frm_Havale(secilenHesap);
+            frmHavale havale = new frmHavale(secilenHesap);
             havale.banka = banka;
             havale.ShowDialog();
+        }
+
+        private void btnHesOzet_Click(object sender, EventArgs e)
+        {
+            frmHesapOzeti hesapOzeti = new frmHesapOzeti(secilenHesap);
+            hesapOzeti.banka = banka;
+            hesapOzeti.ShowDialog();
+
+        }
+
+        private void btnHesKapat_Click(object sender, EventArgs e)
+        {
+            if (secilenHesap.bakiye == 0 && secilenHesap.ekHesap == 0)
+            {
+                txtHesBilgileri.Text = secilenHesap.hesapNumarasi + " hesap numaralı hesap kapatıldı.";
+
+                banka.BankadanHesapSil(secilenHesap);
+                secilenHesap.hangiMusteriyeait.MusteridenHesapSil(secilenHesap);
+                ButonAktivasyon_kapat();
+            }
+
+            else if (secilenHesap.bakiye == 0 && secilenHesap.ekHesap != 0)
+            {
+                txtHesBilgileri.Text = secilenHesap.hesapNumarasi + " hesap numaralı hesabın ek hesabında para bulunmaktadır. (Ek hesap: " + secilenHesap.ekHesap + " ₺)" + Environment.NewLine +
+                                       "Hesap katılamadı, hesabın kapanması için hesapta para bulunmaması gerekmektedir";
+            }
+
+            else
+            {
+                txtHesBilgileri.Text = secilenHesap.hesapNumarasi + " hesap numaralı hesapta para bulunmaktadır. (Bakiye: " + secilenHesap.bakiye + " ₺ - Ek hesap: " + secilenHesap.ekHesap + " ₺)" + Environment.NewLine +
+                                       "Hesap katılamadı, hesabın kapanması için hesapta para bulunmaması gerekmektedir";
+            }
         }
     }
 }

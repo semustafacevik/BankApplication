@@ -1,6 +1,6 @@
 ﻿namespace BankaProjesi
 {
-    partial class frm_Havale
+    partial class frmHavale
     {
         /// <summary>
         /// Required designer variable.

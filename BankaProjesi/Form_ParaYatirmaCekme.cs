@@ -12,9 +12,10 @@ namespace BankaProjesi
 {
     public partial class frmParaYatirmaCekme : Form
     {
-        private Hesap hesap;
-        private Musteri ilgiliMusteri;
-        private string islemTuru;
+        Hesap hesap;
+        Musteri ilgiliMusteri;
+        string islemTuru;
+        decimal girilenTutar;
 
         public frmParaYatirmaCekme(Hesap hesap, string islemTuru)
         {
@@ -23,8 +24,6 @@ namespace BankaProjesi
             this.islemTuru = islemTuru;
             ilgiliMusteri = hesap.hangiMusteriyeait;
         }
-
-        decimal girilenTutar = 0;
 
         private void btnOnayla_Click(object sender, EventArgs e)
         {
@@ -53,14 +52,18 @@ namespace BankaProjesi
                                     ">>> " + hesap.bakiye + " ₺ (Ek hesaptaki tutar: " + hesap.ekHesap + " ₺)";
 
             btnOnayla.Enabled = false;
-            this.Size = new Size(400, 390);
+            this.Size = new Size(430, 390);
         }            
 
         private void MesajKodunaGoreBilgilendirme(int gelenMesajKodu)
         {
             switch (gelenMesajKodu)
             {
-                case 10 | 11:
+                case 10:
+                    txtDurumBilgisi.Text += "Ek hesaptaki miktar tam olmadığı için yatırılan parayla ilk ek hesap tamamlandı, arta kalan para da bakiyeye aktarıldı.";
+                    break;
+
+                case 11:
                     txtDurumBilgisi.Text += "Ek hesaptaki miktar tam olmadığı için yatırılan parayla ilk ek hesap tamamlandı, arta kalan para da bakiyeye aktarıldı.";
                     break;
 

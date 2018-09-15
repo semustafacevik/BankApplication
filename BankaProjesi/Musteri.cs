@@ -14,6 +14,8 @@ namespace BankaProjesi
         public ulong telNo;
         public string musteriTuru;
         public ulong musteriNosu;
+        HesapOzeti hesapOzeti;
+        DateTime islemTarihi;
 
         public List<Hesap> MusterininHesaplari;
 
@@ -27,17 +29,25 @@ namespace BankaProjesi
             MusterininHesaplari.Add(yeniHesap);
         }
 
+        public void MusteridenHesapSil(Hesap silinecekHesap)
+        {
+            MusterininHesaplari.Remove(silinecekHesap);
+        }
 
-        int gelenOnaykodu = 0;
+        int gelenOnaykodu;
 
         public int HesabaParaYatir(Hesap ilgiliHesap, decimal yatirilacakMiktar)
         {
+            islemTarihi = DateTime.Now;
+            hesapOzeti = new HesapOzeti(ilgiliHesap, "Para Yatırma", yatirilacakMiktar, islemTarihi);
+            ilgiliHesap.HesapOzetiEkle(hesapOzeti);
+
             gelenOnaykodu = ParaYatirmaKontrol(ilgiliHesap, yatirilacakMiktar);
 
             switch (gelenOnaykodu)
             {
                 case 10:
-                    ilgiliHesap.bakiye = yatirilacakMiktar - ilgiliHesap.ekHesap;
+                    ilgiliHesap.bakiye = yatirilacakMiktar - (100 - ilgiliHesap.ekHesap);
                     ilgiliHesap.ekHesap = 100;
                     return gelenOnaykodu;
 
@@ -62,6 +72,13 @@ namespace BankaProjesi
         public int HesaptanParaCek(Hesap ilgiliHesap, decimal cekilecekMiktar)
         {
             gelenOnaykodu = ParaCekmeKontrol(ilgiliHesap,cekilecekMiktar);
+
+            if(gelenOnaykodu == 22 || gelenOnaykodu == 23)
+            {
+                islemTarihi = DateTime.Now;
+                hesapOzeti = new HesapOzeti(ilgiliHesap, "Para Çekme", cekilecekMiktar, islemTarihi);
+                ilgiliHesap.HesapOzetiEkle(hesapOzeti);
+            }
 
             switch (gelenOnaykodu)
             {
@@ -118,7 +135,7 @@ namespace BankaProjesi
                 return 21; // yetersiz bakiye
             }
 
-            else if (cekilecekMiktar > kontrolEdilecekhesap.bakiye && cekilecekMiktar < (kontrolEdilecekhesap.bakiye + kontrolEdilecekhesap.ekHesap))
+            else if (cekilecekMiktar > kontrolEdilecekhesap.bakiye && cekilecekMiktar <= (kontrolEdilecekhesap.bakiye + kontrolEdilecekhesap.ekHesap))
             {
                 return 22; // yetersiz bakiye ama ek hesapla birlikte yeterli miktar var
             }
@@ -126,7 +143,6 @@ namespace BankaProjesi
             else
                 return 23;  // herhangi bir sorun yok
         }
-
 
         public virtual bool ParaHavale(Hesap gonderenHesap, Hesap alacakHesap, decimal gonderilecekMiktar)
         {
