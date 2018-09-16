@@ -40,6 +40,8 @@
             this.cmbMusTur = new System.Windows.Forms.ComboBox();
             this.btnMusteriEkle = new System.Windows.Forms.Button();
             this.lblMusteriNo = new System.Windows.Forms.Label();
+            this.lblUyariTCKN = new System.Windows.Forms.Label();
+            this.lblUyariTelNo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -90,6 +92,8 @@
             this.txtSoyad.Name = "txtSoyad";
             this.txtSoyad.Size = new System.Drawing.Size(204, 32);
             this.txtSoyad.TabIndex = 2;
+            this.txtSoyad.TextChanged += new System.EventHandler(this.txtSoyad_TextChanged);
+            this.txtSoyad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoyad_KeyPress);
             // 
             // txtAd
             // 
@@ -99,6 +103,7 @@
             this.txtAd.Name = "txtAd";
             this.txtAd.Size = new System.Drawing.Size(204, 32);
             this.txtAd.TabIndex = 1;
+            this.txtAd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAd_KeyPress);
             // 
             // txtTelNo
             // 
@@ -109,6 +114,8 @@
             this.txtTelNo.Name = "txtTelNo";
             this.txtTelNo.Size = new System.Drawing.Size(204, 32);
             this.txtTelNo.TabIndex = 3;
+            this.txtTelNo.TextChanged += new System.EventHandler(this.txtTelNo_TextChanged);
+            this.txtTelNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelNo_TextChanged);
             // 
             // txtTCKN
             // 
@@ -119,6 +126,8 @@
             this.txtTCKN.Name = "txtTCKN";
             this.txtTCKN.Size = new System.Drawing.Size(204, 32);
             this.txtTCKN.TabIndex = 0;
+            this.txtTCKN.TextChanged += new System.EventHandler(this.txtTCKN_TextChanged);
+            this.txtTCKN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTCKN_KeyPress);
             // 
             // label5
             // 
@@ -159,18 +168,40 @@
             // 
             this.lblMusteriNo.AutoSize = true;
             this.lblMusteriNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblMusteriNo.Location = new System.Drawing.Point(101, 324);
+            this.lblMusteriNo.Location = new System.Drawing.Point(100, 318);
             this.lblMusteriNo.Name = "lblMusteriNo";
             this.lblMusteriNo.Size = new System.Drawing.Size(78, 25);
             this.lblMusteriNo.TabIndex = 6;
             this.lblMusteriNo.Text = "123456";
             this.lblMusteriNo.Click += new System.EventHandler(this.lblMusteriNo_Click);
             // 
+            // lblUyariTCKN
+            // 
+            this.lblUyariTCKN.AutoSize = true;
+            this.lblUyariTCKN.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblUyariTCKN.Location = new System.Drawing.Point(245, 27);
+            this.lblUyariTCKN.Name = "lblUyariTCKN";
+            this.lblUyariTCKN.Size = new System.Drawing.Size(23, 31);
+            this.lblUyariTCKN.TabIndex = 20;
+            this.lblUyariTCKN.Text = "!";
+            // 
+            // lblUyariTelNo
+            // 
+            this.lblUyariTelNo.AutoSize = true;
+            this.lblUyariTelNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblUyariTelNo.Location = new System.Drawing.Point(245, 204);
+            this.lblUyariTelNo.Name = "lblUyariTelNo";
+            this.lblUyariTelNo.Size = new System.Drawing.Size(23, 31);
+            this.lblUyariTelNo.TabIndex = 21;
+            this.lblUyariTelNo.Text = "!";
+            // 
             // frmYeniMusteri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(279, 372);
+            this.ClientSize = new System.Drawing.Size(279, 378);
+            this.Controls.Add(this.lblUyariTelNo);
+            this.Controls.Add(this.lblUyariTCKN);
             this.Controls.Add(this.lblMusteriNo);
             this.Controls.Add(this.btnMusteriEkle);
             this.Controls.Add(this.cmbMusTur);
@@ -206,5 +237,7 @@
         private System.Windows.Forms.ComboBox cmbMusTur;
         private System.Windows.Forms.Button btnMusteriEkle;
         private System.Windows.Forms.Label lblMusteriNo;
+        private System.Windows.Forms.Label lblUyariTCKN;
+        private System.Windows.Forms.Label lblUyariTelNo;
     }
 }

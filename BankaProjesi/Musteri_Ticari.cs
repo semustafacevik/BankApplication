@@ -8,22 +8,26 @@ namespace BankaProjesi
 {
     public class Musteri_Ticari : Musteri
     {
-        HesapOzeti hesapOzeti;
+        HesapOzeti hesapOzeti_Gond;
+        HesapOzeti hesapOzeti_Alan;
         DateTime islemTarihi;
 
         public override bool ParaHavale(Hesap gonderenHesap, Hesap alacakHesap, decimal gonderilecekMiktar)
         {
-            bool gelenOnay = base.ParaHavale(gonderenHesap, alacakHesap, gonderilecekMiktar);
+            bool havaleOnay = base.ParaHavale(gonderenHesap, alacakHesap, gonderilecekMiktar);
 
-            if (gelenOnay)
+            if (havaleOnay)
             {
                 islemTarihi = DateTime.Now;
-                hesapOzeti = new HesapOzeti(gonderenHesap, "Havale(" + alacakHesap.hesapNumarasi + ")", gonderilecekMiktar, islemTarihi);
-                gonderenHesap.HesapOzetiEkle(hesapOzeti);
-                alacakHesap.hangiMusteriyeait.HesabaParaYatir(alacakHesap, gonderilecekMiktar);
-            }
+                hesapOzeti_Gond = new HesapOzeti(gonderenHesap, "Havale >> (" + alacakHesap.hesapNumarasi + ")", -gonderilecekMiktar, islemTarihi);
+                gonderenHesap.HesapOzetiEkle(hesapOzeti_Gond);
 
-            return gelenOnay;
+                alacakHesap.hangiMusteriyeait.HesabaParaYatir(alacakHesap, gonderilecekMiktar);
+                islemTarihi = DateTime.Now;
+                hesapOzeti_Alan = new HesapOzeti(alacakHesap, "(" + gonderenHesap.hesapNumarasi + ") >> Havale", gonderilecekMiktar, islemTarihi);
+                alacakHesap.HesapOzetiEkle(hesapOzeti_Alan);
+            }
+            return havaleOnay;
         }
     }
 }

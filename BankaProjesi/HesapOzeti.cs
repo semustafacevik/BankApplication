@@ -9,21 +9,17 @@ namespace BankaProjesi
 {
     public class HesapOzeti
     {
-        public Hesap ilgiliHesap;
+        public Hesap hesap;
         public string islemTuru;
         public decimal tutar;
         public DateTime islemTarihi;
 
-        public HesapOzeti()
+        public HesapOzeti(Hesap hesap, string islemTuru, decimal tutar, DateTime islemTarihi)
         {
-        }
-
-        public HesapOzeti(Hesap hesap, string islemTur, decimal miktar, DateTime tarih)
-        {
-            ilgiliHesap = hesap;
-            islemTuru = islemTur;
-            tutar = miktar;
-            islemTarihi = tarih;
+            this.hesap = hesap;
+            this.islemTuru = islemTuru;
+            this.tutar = tutar;
+            this.islemTarihi = islemTarihi;
         }
     }
 }

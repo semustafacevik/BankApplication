@@ -31,14 +31,14 @@
             this.btnOnayla = new System.Windows.Forms.Button();
             this.txtTutar = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtDurumBilgisi = new System.Windows.Forms.TextBox();
+            this.txtDurumBil = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnOnayla
             // 
             this.btnOnayla.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnOnayla.Location = new System.Drawing.Point(160, 38);
+            this.btnOnayla.Location = new System.Drawing.Point(160, 34);
             this.btnOnayla.Name = "btnOnayla";
             this.btnOnayla.Size = new System.Drawing.Size(119, 32);
             this.btnOnayla.TabIndex = 1;
@@ -49,7 +49,7 @@
             // txtTutar
             // 
             this.txtTutar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtTutar.Location = new System.Drawing.Point(18, 38);
+            this.txtTutar.Location = new System.Drawing.Point(18, 34);
             this.txtTutar.Multiline = true;
             this.txtTutar.Name = "txtTutar";
             this.txtTutar.Size = new System.Drawing.Size(120, 32);
@@ -59,26 +59,26 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label9.Location = new System.Drawing.Point(15, 18);
+            this.label9.Location = new System.Drawing.Point(15, 14);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(42, 17);
             this.label9.TabIndex = 11;
             this.label9.Text = "Tutar";
             // 
-            // txtDurumBilgisi
+            // txtDurumBil
             // 
-            this.txtDurumBilgisi.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtDurumBilgisi.Location = new System.Drawing.Point(18, 120);
-            this.txtDurumBilgisi.Multiline = true;
-            this.txtDurumBilgisi.Name = "txtDurumBilgisi";
-            this.txtDurumBilgisi.Size = new System.Drawing.Size(374, 219);
-            this.txtDurumBilgisi.TabIndex = 2;
+            this.txtDurumBil.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtDurumBil.Location = new System.Drawing.Point(18, 110);
+            this.txtDurumBil.Multiline = true;
+            this.txtDurumBil.Name = "txtDurumBil";
+            this.txtDurumBil.Size = new System.Drawing.Size(421, 161);
+            this.txtDurumBil.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(15, 100);
+            this.label3.Location = new System.Drawing.Point(15, 90);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 17);
             this.label3.TabIndex = 24;
@@ -88,11 +88,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 94);
+            this.ClientSize = new System.Drawing.Size(458, 281);
             this.Controls.Add(this.btnOnayla);
             this.Controls.Add(this.txtTutar);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.txtDurumBilgisi);
+            this.Controls.Add(this.txtDurumBil);
             this.Controls.Add(this.label3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmParaYatirmaCekme";
@@ -107,7 +107,7 @@
         private System.Windows.Forms.Button btnOnayla;
         private System.Windows.Forms.TextBox txtTutar;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtDurumBilgisi;
+        private System.Windows.Forms.TextBox txtDurumBil;
         private System.Windows.Forms.Label label3;
     }
 }

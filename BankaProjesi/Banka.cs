@@ -38,7 +38,7 @@ namespace BankaProjesi
 
             foreach (Musteri musteriler in Musteriler)
             {
-                if (musteriler.musteriNosu == musteriNumarasi)
+                if (musteriler.musteriNumarasi == musteriNumarasi)
                 {
                     arananMusteri = musteriler;
                     return arananMusteri;
@@ -60,6 +60,17 @@ namespace BankaProjesi
                 }
             }
             return null;
+        }
+
+        public bool KimlikSorgula(ulong TCKN)
+        {
+            foreach (Musteri musteriler in Musteriler) 
+            {
+                if (musteriler.TCKN == TCKN)
+                    return false;
+            }
+
+            return true;
         }
     }
 }

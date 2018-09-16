@@ -19,20 +19,27 @@ namespace BankaProjesi
         public frmHavale(Hesap gonderenHesap)
         {
             InitializeComponent();
-
             this.gonderenHesap = gonderenHesap;
+            txtTutar.Enabled = false;
+            btnOnayla.Enabled = false;
         }
 
-        private void btnBul_Click(object sender, EventArgs e)
+        private void btnHesBul_Click(object sender, EventArgs e)
         {
-            ulong bulunacakHesapNo = Convert.ToUInt32(txtGondHesNo.Text);
+            ulong bulunacakHesapNo = Convert.ToUInt64(txtGondHesNo.Text);
 
             alanHesap = banka.HesapBul(bulunacakHesapNo);
 
             if (alanHesap != null)
             {
-                txtGondHesBil.Text = "Ad Soyad: " + alanHesap.hangiMusteriyeait.ad + " " + alanHesap.hangiMusteriyeait.soyad;
+                txtGondBil.Text = "Ad: " + alanHesap.hangiMusteriyeait.ad + "\r\nSoyad: " + alanHesap.hangiMusteriyeait.soyad;
+                txtTutar.Enabled = true;
+                btnOnayla.Enabled = true;
+                btnHesBul.Enabled = false;
+
             }
+            else
+                txtGondBil.Text = bulunacakHesapNo + " numaralı herhangi bir hesap bulunamamıştır.";
         }
 
         private void btnOnayla_Click(object sender, EventArgs e)
@@ -45,6 +52,7 @@ namespace BankaProjesi
             {
                 txtDurumBilgisi.Text = "Havale işlemi gerçekleşti. İşlem sonrası toplam bakiye: " + Environment.NewLine + 
                                        ">>> " + gonderenHesap.bakiye + " ₺";
+                btnOnayla.Enabled = false;
             }
 
             else

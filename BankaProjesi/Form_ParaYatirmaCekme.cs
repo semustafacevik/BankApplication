@@ -15,7 +15,6 @@ namespace BankaProjesi
         Hesap hesap;
         Musteri ilgiliMusteri;
         string islemTuru;
-        decimal girilenTutar;
 
         public frmParaYatirmaCekme(Hesap hesap, string islemTuru)
         {
@@ -23,72 +22,83 @@ namespace BankaProjesi
             this.hesap = hesap;
             this.islemTuru = islemTuru;
             ilgiliMusteri = hesap.hangiMusteriyeait;
-        }
+        }      
+
+        decimal girilenTutar;
+        HesapOzeti hesapOzeti;
+        DateTime islemTarihi;
 
         private void btnOnayla_Click(object sender, EventArgs e)
         {
             girilenTutar = Convert.ToDecimal(txtTutar.Text);
 
-            txtDurumBilgisi.Text = "TCKN: " + hesap.hangiMusteriyeait.TCKN + Environment.NewLine +
-                                   "Ad Soyad: " + hesap.hangiMusteriyeait.ad + " " + hesap.hangiMusteriyeait.soyad + Environment.NewLine +
-                                   "Hesap No: " + hesap.hesapNumarasi + Environment.NewLine;
+            txtDurumBil.Text = "Hesap No: " + hesap.hesapNumarasi + Environment.NewLine;
+
             int mesajKodu = 0;
             switch (islemTuru)
             {
                 case "parayatirma":
                     mesajKodu = ilgiliMusteri.HesabaParaYatir(hesap,girilenTutar);
+                    islemTarihi = DateTime.Now;
+                    hesapOzeti = new HesapOzeti(hesap, "Para Yatırma", girilenTutar, islemTarihi);
+                    hesap.HesapOzetiEkle(hesapOzeti);
+
                     break;
 
                 case "paracekme":
                     mesajKodu = ilgiliMusteri.HesaptanParaCek(hesap,girilenTutar);
+                    if (mesajKodu == 22 || mesajKodu == 23)
+                    {
+                        islemTarihi = DateTime.Now;
+                        hesapOzeti = new HesapOzeti(hesap, "Para Çekme", -girilenTutar, islemTarihi);
+                        hesap.HesapOzetiEkle(hesapOzeti);
+                    }
                     break;
 
                 default:
                     break;
             }
 
-            MesajKodunaGoreBilgilendirme(mesajKodu);
-            txtDurumBilgisi.Text += " Toplam bakiye: " + Environment.NewLine +
+            MesajKodunaGoreBilgilendir(mesajKodu);
+            txtDurumBil.Text += " Toplam bakiye: " + Environment.NewLine +
                                     ">>> " + hesap.bakiye + " ₺ (Ek hesaptaki tutar: " + hesap.ekHesap + " ₺)";
-
             btnOnayla.Enabled = false;
-            this.Size = new Size(430, 390);
         }            
 
-        private void MesajKodunaGoreBilgilendirme(int gelenMesajKodu)
+        private void MesajKodunaGoreBilgilendir(int gelenMesajKodu)
         {
             switch (gelenMesajKodu)
             {
                 case 10:
-                    txtDurumBilgisi.Text += "Ek hesaptaki miktar tam olmadığı için yatırılan parayla ilk ek hesap tamamlandı, arta kalan para da bakiyeye aktarıldı.";
+                    txtDurumBil.Text += "Ek hesaptaki miktar tam olmadığı için yatırılan parayla ilk ek hesap tamamlandı, arta kalan para da bakiyeye aktarıldı.";
                     break;
 
                 case 11:
-                    txtDurumBilgisi.Text += "Ek hesaptaki miktar tam olmadığı için yatırılan parayla ilk ek hesap tamamlandı, arta kalan para da bakiyeye aktarıldı.";
+                    txtDurumBil.Text += "Ek hesaptaki miktar tam olmadığı için yatırılan parayla ilk ek hesap tamamlandı, arta kalan para da bakiyeye aktarıldı.";
                     break;
 
                 case 12:
-                    txtDurumBilgisi.Text += "Ek hesaptaki miktar tam olmadığı için yatırılan para ek hesaba yatırıldı.";
+                    txtDurumBil.Text += "Ek hesaptaki miktar tam olmadığı için yatırılan para ek hesaba yatırıldı.";
                     break;
 
                 case 13:
-                    txtDurumBilgisi.Text += "Para yatırma işleminiz gerçekleşti.";
+                    txtDurumBil.Text += "Para yatırma işleminiz gerçekleşti.";
                     break;
 
                 case 20:
-                    txtDurumBilgisi.Text += "Günlük para çekme limitiniz 750 ₺'dir. İşlem gerçekleştirelemedi. ";
+                    txtDurumBil.Text += "Günlük para çekme limitiniz 750 ₺'dir. İşlem gerçekleştirelemedi. ";
                     break;
 
                 case 21:
-                    txtDurumBilgisi.Text += "Yetersiz bakiye. İşlem gerçekleştirelemedi.";
+                    txtDurumBil.Text += "Yetersiz bakiye. İşlem gerçekleştirelemedi.";
                     break;
 
                 case 22:
-                    txtDurumBilgisi.Text += "Çekmek istediğiniz tutar bakiyenizden fazla olduğu için ek hesaptan borç alınıyor.";
+                    txtDurumBil.Text += "Çekmek istediğiniz tutar bakiyenizden fazla olduğu için ek hesaptan borç alınıyor.";
                     break;
 
                 case 23:
-                    txtDurumBilgisi.Text += "Para çekme işleminiz gerçekleşti.";
+                    txtDurumBil.Text += "Para çekme işleminiz gerçekleşti.";
                     break;
 
                 default:

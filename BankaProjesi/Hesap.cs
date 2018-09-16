@@ -25,16 +25,15 @@ namespace BankaProjesi
             this.hesapOzeti.Add(hesapOzeti);
         }
 
-        public string HesapOzetiYazdir(Hesap hesap)
+        public string HesapOzetiYazdir()
         {
             string yazdirilacakBilgiler = "";
-            foreach (HesapOzeti hesOzet in hesap.hesapOzeti)
+
+            foreach (HesapOzeti hesOzet in hesapOzeti)
             {
-                if(hesOzet.ilgiliHesap == hesap)
-                {
-                    yazdirilacakBilgiler += hesOzet.islemTuru + " --- " + hesOzet.tutar + " --- " + hesOzet.islemTarihi + Environment.NewLine;
-                }
+                yazdirilacakBilgiler += hesOzet.islemTuru + "  #  " + hesOzet.tutar + " ₺  #  " + hesOzet.islemTarihi + Environment.NewLine;
             }
+
             return yazdirilacakBilgiler;
         } 
     }

@@ -11,12 +11,9 @@ namespace BankaProjesi
         public ulong TCKN;
         public string ad;
         public string soyad;
-        public ulong telNo;
+        public ulong telefonNumarasi;
         public string musteriTuru;
-        public ulong musteriNosu;
-        HesapOzeti hesapOzeti;
-        DateTime islemTarihi;
-
+        public ulong musteriNumarasi;
         public List<Hesap> MusterininHesaplari;
 
         public Musteri()
@@ -35,13 +32,8 @@ namespace BankaProjesi
         }
 
         int gelenOnaykodu;
-
         public int HesabaParaYatir(Hesap ilgiliHesap, decimal yatirilacakMiktar)
         {
-            islemTarihi = DateTime.Now;
-            hesapOzeti = new HesapOzeti(ilgiliHesap, "Para Yatırma", yatirilacakMiktar, islemTarihi);
-            ilgiliHesap.HesapOzetiEkle(hesapOzeti);
-
             gelenOnaykodu = ParaYatirmaKontrol(ilgiliHesap, yatirilacakMiktar);
 
             switch (gelenOnaykodu)
@@ -49,60 +41,59 @@ namespace BankaProjesi
                 case 10:
                     ilgiliHesap.bakiye = yatirilacakMiktar - (100 - ilgiliHesap.ekHesap);
                     ilgiliHesap.ekHesap = 100;
-                    return gelenOnaykodu;
+                    break;
 
                 case 11:                   
                     ilgiliHesap.bakiye = (ilgiliHesap.ekHesap + yatirilacakMiktar) - 100;
                     ilgiliHesap.ekHesap = 100;
-                    return gelenOnaykodu;
+                    break;
 
                 case 12:
                     ilgiliHesap.ekHesap += yatirilacakMiktar;
-                    return gelenOnaykodu;
+                    break;
 
                 case 13:
                     ilgiliHesap.bakiye += yatirilacakMiktar;
-                    return gelenOnaykodu;
+                    break;
 
                 default:
-                    return 0;
+                    gelenOnaykodu = 0;
+                    break;
             }
+
+            return gelenOnaykodu;
         }
 
         public int HesaptanParaCek(Hesap ilgiliHesap, decimal cekilecekMiktar)
         {
             gelenOnaykodu = ParaCekmeKontrol(ilgiliHesap,cekilecekMiktar);
 
-            if(gelenOnaykodu == 22 || gelenOnaykodu == 23)
-            {
-                islemTarihi = DateTime.Now;
-                hesapOzeti = new HesapOzeti(ilgiliHesap, "Para Çekme", cekilecekMiktar, islemTarihi);
-                ilgiliHesap.HesapOzetiEkle(hesapOzeti);
-            }
-
             switch (gelenOnaykodu)
             {
                 case 20:
-                    return gelenOnaykodu;
+                    break;
 
                 case 21:
-                    return gelenOnaykodu;
+                    break;
 
                 case 22:
                     ilgiliHesap.bakiye -= cekilecekMiktar;
                     ilgiliHesap.ekHesap += ilgiliHesap.bakiye;
                     ilgiliHesap.bakiye = 0;
                     ilgiliHesap.hesaptanCekilentoplamTutar += cekilecekMiktar;
-                    return gelenOnaykodu;
+                    break;
 
                 case 23:
                     ilgiliHesap.bakiye -= cekilecekMiktar;
                     ilgiliHesap.hesaptanCekilentoplamTutar += cekilecekMiktar;
-                    return gelenOnaykodu;
+                    break;
 
                 default:
-                    return 0;
+                    gelenOnaykodu = 0;
+                    break;
             }
+
+            return gelenOnaykodu;
         }
 
         public int ParaYatirmaKontrol(Hesap kontrolEdilecekhesap, decimal yatirilacakMiktar)
@@ -146,7 +137,7 @@ namespace BankaProjesi
 
         public virtual bool ParaHavale(Hesap gonderenHesap, Hesap alacakHesap, decimal gonderilecekMiktar)
         {
-            if (gonderenHesap.bakiye >= gonderilecekMiktar)
+            if (gonderilecekMiktar <= gonderenHesap.bakiye)
             {
                 gonderenHesap.bakiye -= gonderilecekMiktar;
                 return true;

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.txtMusteriNo = new System.Windows.Forms.TextBox();
+            this.txtMusNo = new System.Windows.Forms.TextBox();
             this.btnMusBul = new System.Windows.Forms.Button();
             this.btnHesapAc = new System.Windows.Forms.Button();
-            this.txtMusteriBilgileri = new System.Windows.Forms.TextBox();
+            this.txtMusBilgileri = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblHesapNo = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -47,15 +47,15 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Müşteri Numarası";
             // 
-            // txtMusteriNo
+            // txtMusNo
             // 
-            this.txtMusteriNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtMusteriNo.Location = new System.Drawing.Point(21, 40);
-            this.txtMusteriNo.MaxLength = 6;
-            this.txtMusteriNo.Multiline = true;
-            this.txtMusteriNo.Name = "txtMusteriNo";
-            this.txtMusteriNo.Size = new System.Drawing.Size(190, 32);
-            this.txtMusteriNo.TabIndex = 0;
+            this.txtMusNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtMusNo.Location = new System.Drawing.Point(21, 40);
+            this.txtMusNo.MaxLength = 6;
+            this.txtMusNo.Multiline = true;
+            this.txtMusNo.Name = "txtMusNo";
+            this.txtMusNo.Size = new System.Drawing.Size(190, 32);
+            this.txtMusNo.TabIndex = 0;
             // 
             // btnMusBul
             // 
@@ -79,14 +79,14 @@
             this.btnHesapAc.UseVisualStyleBackColor = true;
             this.btnHesapAc.Click += new System.EventHandler(this.btnHesapAc_Click);
             // 
-            // txtMusteriBilgileri
+            // txtMusBilgileri
             // 
-            this.txtMusteriBilgileri.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtMusteriBilgileri.Location = new System.Drawing.Point(229, 40);
-            this.txtMusteriBilgileri.Multiline = true;
-            this.txtMusteriBilgileri.Name = "txtMusteriBilgileri";
-            this.txtMusteriBilgileri.Size = new System.Drawing.Size(284, 84);
-            this.txtMusteriBilgileri.TabIndex = 13;
+            this.txtMusBilgileri.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtMusBilgileri.Location = new System.Drawing.Point(229, 40);
+            this.txtMusBilgileri.Multiline = true;
+            this.txtMusBilgileri.Name = "txtMusBilgileri";
+            this.txtMusBilgileri.Size = new System.Drawing.Size(284, 84);
+            this.txtMusBilgileri.TabIndex = 13;
             // 
             // label2
             // 
@@ -117,8 +117,8 @@
             this.Controls.Add(this.lblHesapNo);
             this.Controls.Add(this.btnHesapAc);
             this.Controls.Add(this.btnMusBul);
-            this.Controls.Add(this.txtMusteriBilgileri);
-            this.Controls.Add(this.txtMusteriNo);
+            this.Controls.Add(this.txtMusBilgileri);
+            this.Controls.Add(this.txtMusNo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -133,10 +133,10 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtMusteriNo;
+        private System.Windows.Forms.TextBox txtMusNo;
         private System.Windows.Forms.Button btnMusBul;
         private System.Windows.Forms.Button btnHesapAc;
-        private System.Windows.Forms.TextBox txtMusteriBilgileri;
+        private System.Windows.Forms.TextBox txtMusBilgileri;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblHesapNo;
     }

@@ -17,88 +17,114 @@ namespace BankaProjesi
         {
             InitializeComponent();
             lblMusteriNo.Hide();
+            ButonAktivasyon_Gizle();
         }
-
+        
         ulong musteriTCKN;
-        string musteriAdi;
-        string musteriSoyadi;
+        string musteriAd;
+        string musteriSoyad;
         ulong musteriTelno;
-        string musteriTuru;
+        string musteriTur;
         ulong musteriNo;
-        Random randMusteriNo = new Random();
+        Random randMusterino = new Random(); 
 
         private void btnMusteriEkle_Click(object sender, EventArgs e)
         {
+            ButonAktivasyon_Gizle();
             musteriTCKN = Convert.ToUInt64(txtTCKN.Text);
-            musteriAdi = txtAd.Text;
-            musteriSoyadi = txtSoyad.Text;
+            musteriAd = txtAd.Text;
+            musteriSoyad = txtSoyad.Text;
             musteriTelno = Convert.ToUInt64(txtTelNo.Text);
-            musteriTuru = cmbMusTur.SelectedItem.ToString();
+            musteriTur = cmbMusTur.SelectedItem.ToString();
 
-            if (musteriTuru == "Bireysel Müşteri")
+            bool kayitDurumu = banka.KimlikSorgula(musteriTCKN);
+
+            if (txtTCKN.TextLength == 11 && txtTelNo.TextLength == 10 && kayitDurumu)
             {
-                musteriNo = Convert.ToUInt32(randMusteriNo.Next(100000, 500000));
-                FarkliMusteriNumarasiUretme(100000, 500000);
+                if (musteriTur == "Bireysel Müşteri")
+                {
+                    musteriNo = Convert.ToUInt32(randMusterino.Next(100000, 500000));
+                    FarkliMusteriNumarasiUret(100000, 500000);
+                }
+
+                else if (musteriTur == "Ticari Müşteri")
+                {
+                    musteriNo = Convert.ToUInt32(randMusterino.Next(500000, 1000000));
+                    FarkliMusteriNumarasiUret(500000, 1000000);
+                }
+
+                else
+                {
+                    // hatalı
+                }
+
+                lblMusteriNo.Text = musteriNo.ToString();
+                btnMusteriEkle.Hide();
+                lblMusteriNo.Show();
+
+                MusteriBilgileriniKaydet();
             }
 
-            else if (musteriTuru == "Ticari Müşteri")
+            else if (!kayitDurumu)
             {
-                musteriNo = Convert.ToUInt32(randMusteriNo.Next(500000, 1000000));
-                FarkliMusteriNumarasiUretme(500000, 1000000);
+                lblMusteriNo.Text = " Kayıtlı\r\nMüşteri";
+                btnMusteriEkle.Hide();
+                lblMusteriNo.Show();
             }
+
+            else if (txtTCKN.TextLength != 11 && txtTelNo.TextLength == 10)
+                lblUyariTCKN.Show();
+
+            else if (txtTelNo.TextLength != 10 && txtTCKN.TextLength == 11)
+                lblUyariTelNo.Show();
 
             else
             {
-                // hatalı
+                lblUyariTCKN.Show();
+                lblUyariTelNo.Show();
             }
-
-            lblMusteriNo.Text = musteriNo.ToString();
-            btnMusteriEkle.Hide();
-            lblMusteriNo.Show();
-
-            MusteriBilgileriniKaydetme();
         }
 
-        private void FarkliMusteriNumarasiUretme(int minDeger, int maxDeger)
+        private void FarkliMusteriNumarasiUret(int minDeger, int maxDeger)
         {
             foreach (Musteri mevcutMusteriler in banka.Musteriler)
             {
-                while (musteriNo == mevcutMusteriler.musteriNosu)
+                while (musteriNo == mevcutMusteriler.musteriNumarasi)
                 {
-                    musteriNo = Convert.ToUInt32(randMusteriNo.Next(minDeger, maxDeger));
-                    FarkliMusteriNumarasiUretme(minDeger, maxDeger);
+                    musteriNo = Convert.ToUInt32(randMusterino.Next(minDeger, maxDeger));
+                    FarkliMusteriNumarasiUret(minDeger, maxDeger);
                 }
             }
         }
 
-        private void MusteriBilgileriniKaydetme()
+        private void MusteriBilgileriniKaydet()
         {
-            switch (musteriTuru)
+            switch (musteriTur)
             {
                 case "Bireysel Müşteri":
-                    Musteri_Bireysel yeniBirMusteri = new Musteri_Bireysel
+                    Musteri_Bireysel yeniBireyselMus = new Musteri_Bireysel
                     {
                         TCKN = musteriTCKN,
-                        ad = musteriAdi,
-                        soyad = musteriSoyadi,
-                        telNo = musteriTelno,
-                        musteriTuru = musteriTuru,
-                        musteriNosu = musteriNo
+                        ad = musteriAd,
+                        soyad = musteriSoyad,
+                        telefonNumarasi = musteriTelno,
+                        musteriTuru = musteriTur,
+                        musteriNumarasi = musteriNo
                     };
-                    banka.BankayaMusteriEkle(yeniBirMusteri);
+                    banka.BankayaMusteriEkle(yeniBireyselMus);
                     break;
 
                 case "Ticari Müşteri":
-                    Musteri_Ticari yeniTicMusteri = new Musteri_Ticari
+                    Musteri_Ticari yeniTicariMus = new Musteri_Ticari
                     {
                         TCKN = musteriTCKN,
-                        ad = musteriAdi,
-                        soyad = musteriSoyadi,
-                        telNo = musteriTelno,
-                        musteriTuru = musteriTuru,
-                        musteriNosu = musteriNo
+                        ad = musteriAd,
+                        soyad = musteriSoyad,
+                        telefonNumarasi = musteriTelno,
+                        musteriTuru = musteriTur,
+                        musteriNumarasi = musteriNo
                     };
-                    banka.BankayaMusteriEkle(yeniTicMusteri);
+                    banka.BankayaMusteriEkle(yeniTicariMus);
                     break;
 
                 default:
@@ -107,9 +133,50 @@ namespace BankaProjesi
             }
         }
 
+        private void ButonAktivasyon_Gizle()
+        {
+            lblUyariTCKN.Hide();
+            lblUyariTelNo.Hide();
+        }
+
         private void lblMusteriNo_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtTCKN_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtAd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsSeparator(e.KeyChar);
+        }
+
+        private void txtSoyad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsSeparator(e.KeyChar);
+        }
+
+        private void txtTelNo_TextChanged(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtSoyad_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTelNo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTCKN_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

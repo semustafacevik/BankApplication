@@ -20,48 +20,50 @@ namespace BankaProjesi
             lblHesapNo.Hide();
         }
 
-        Hesap yeniHesap = null;
-        Musteri bulunacakMusteri = null;
+        Hesap yeniHesap;
+        Musteri ilgiliMusteri;
         ulong hesapNo;
         Random randHesapNo = new Random();
         DateTime islemTarihi;
 
         private void btnMusBul_Click(object sender, EventArgs e)
         {
-            ulong aranacakMusterino = Convert.ToUInt64(txtMusteriNo.Text);
+            ulong aranacakMusNo = Convert.ToUInt64(txtMusNo.Text);
 
-            bulunacakMusteri = banka.MusteriBul(aranacakMusterino);
+            ilgiliMusteri = banka.MusteriBul(aranacakMusNo);
 
-            if (bulunacakMusteri != null)
+            if (ilgiliMusteri != null)
             {
-                MusteriBilgileriniYazdırma();
+                MusteriBilgileriniYazdir();
                 btnHesapAc.Enabled = true;
                 btnMusBul.Enabled = false;
             }
+
+            else
+                txtMusBilgileri.Text = aranacakMusNo + " numarasına sahip herhangi bir müşteri bulunamadı.";
         }
 
-        private void MusteriBilgileriniYazdırma()
+        private void MusteriBilgileriniYazdir()
         {
-            txtMusteriBilgileri.Text = "TCKN: " + bulunacakMusteri.TCKN.ToString() + Environment.NewLine +
-                                       "Ad Soyad: " + bulunacakMusteri.ad + " " + bulunacakMusteri.soyad + Environment.NewLine +
-                                       "Müşteri Türü: " + bulunacakMusteri.musteriTuru;
+            txtMusBilgileri.Text = "TCKN: " + ilgiliMusteri.TCKN + Environment.NewLine +
+                                   "Ad Soyad: " + ilgiliMusteri.ad + " " + ilgiliMusteri.soyad + Environment.NewLine +
+                                   "Müşteri Türü: " + ilgiliMusteri.musteriTuru;
         }
       
         private void btnHesapAc_Click(object sender, EventArgs e)
         {
-            islemTarihi = DateTime.Now;
-            if (bulunacakMusteri.musteriTuru == "Bireysel Müşteri")
+            if (ilgiliMusteri.musteriTuru == "Bireysel Müşteri")
             {
                 hesapNo = Convert.ToUInt64(randHesapNo.Next(1000000, 5000000));
-                FarkliHesapNumarasiUretme(1000000, 5000000);
-                HesapBilgileriniKaydetme();
+                FarkliHesapNumarasiUret(1000000, 5000000);
+                HesapBilgileriniKaydet();
             } 
 
-            else if(bulunacakMusteri.musteriTuru == "Ticari Müşteri")
+            else if(ilgiliMusteri.musteriTuru == "Ticari Müşteri")
             {
                 hesapNo = Convert.ToUInt64(randHesapNo.Next(5000000, 10000000));
-                FarkliHesapNumarasiUretme(5000000, 10000000);
-                HesapBilgileriniKaydetme();
+                FarkliHesapNumarasiUret(5000000, 10000000);
+                HesapBilgileriniKaydet();
             }
 
             else
@@ -69,32 +71,33 @@ namespace BankaProjesi
                 // hatalı
             }
 
+            islemTarihi = DateTime.Now;
+            HesapOzeti hesapOzeti = new HesapOzeti(yeniHesap, "Hesap Açma", +100, islemTarihi);
+            yeniHesap.HesapOzetiEkle(hesapOzeti);
+
             btnHesapAc.Hide();
             lblHesapNo.Show();
             lblHesapNo.Text = hesapNo.ToString();
-
-            HesapOzeti hesapOzeti = new HesapOzeti(yeniHesap, "Hesap Açma", 0, islemTarihi);
-            yeniHesap.HesapOzetiEkle(hesapOzeti);
         }
 
-        private void HesapBilgileriniKaydetme()
+        private void HesapBilgileriniKaydet()
         {
             yeniHesap = new Hesap();
             yeniHesap.hesapNumarasi = hesapNo;
             yeniHesap.ekHesap = 100;
-            yeniHesap.hangiMusteriyeait = bulunacakMusteri;
-            bulunacakMusteri.MusteriyeHesapEkle(yeniHesap);
+            yeniHesap.hangiMusteriyeait = ilgiliMusteri;
+            ilgiliMusteri.MusteriyeHesapEkle(yeniHesap);
             banka.BankayaHesapEkle(yeniHesap);
         }
 
-        private void FarkliHesapNumarasiUretme(int minDeger, int maxDeger)
+        private void FarkliHesapNumarasiUret(int minDeger, int maxDeger)
         {
             foreach (Hesap mevcutHesaplar in banka.Hesaplar)
             {
                 while (hesapNo == mevcutHesaplar.hesapNumarasi)
                 {
-                    hesapNo = Convert.ToUInt32(randHesapNo.Next(minDeger, maxDeger));
-                    FarkliHesapNumarasiUretme(minDeger, maxDeger);
+                    hesapNo = Convert.ToUInt64(randHesapNo.Next(minDeger, maxDeger));
+                    FarkliHesapNumarasiUret(minDeger, maxDeger);
                 }
             }
         }
