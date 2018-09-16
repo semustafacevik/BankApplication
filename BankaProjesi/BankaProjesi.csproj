@@ -89,6 +89,7 @@
       <DependentUpon>Form_YeniHesap.cs</DependentUpon>
     </Compile>
     <Compile Include="Musteri_Ticari.cs" />
+    <Compile Include="GelirGiderRaporu.cs" />
     <EmbeddedResource Include="Form_Havale.resx">
       <DependentUpon>Form_Havale.cs</DependentUpon>
     </EmbeddedResource>

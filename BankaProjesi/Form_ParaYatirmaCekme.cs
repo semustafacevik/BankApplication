@@ -12,6 +12,7 @@ namespace BankaProjesi
 {
     public partial class frmParaYatirmaCekme : Form
     {
+        public GelirGiderRaporu rapor;
         Hesap hesap;
         Musteri ilgiliMusteri;
         string islemTuru;
@@ -40,9 +41,8 @@ namespace BankaProjesi
                 case "parayatirma":
                     mesajKodu = ilgiliMusteri.HesabaParaYatir(hesap,girilenTutar);
                     islemTarihi = DateTime.Now;
-                    hesapOzeti = new HesapOzeti(hesap, "Para Yatırma", girilenTutar, islemTarihi);
+                    hesapOzeti = new HesapOzeti(hesap, "Para Yatırma", girilenTutar, islemTarihi,rapor);
                     hesap.HesapOzetiEkle(hesapOzeti);
-
                     break;
 
                 case "paracekme":
@@ -50,7 +50,7 @@ namespace BankaProjesi
                     if (mesajKodu == 22 || mesajKodu == 23)
                     {
                         islemTarihi = DateTime.Now;
-                        hesapOzeti = new HesapOzeti(hesap, "Para Çekme", -girilenTutar, islemTarihi);
+                        hesapOzeti = new HesapOzeti(hesap, "Para Çekme", -girilenTutar, islemTarihi,rapor);
                         hesap.HesapOzetiEkle(hesapOzeti);
                     }
                     break;

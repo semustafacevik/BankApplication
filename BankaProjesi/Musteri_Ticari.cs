@@ -11,6 +11,7 @@ namespace BankaProjesi
         HesapOzeti hesapOzeti_Gond;
         HesapOzeti hesapOzeti_Alan;
         DateTime islemTarihi;
+        GelirGiderRaporu rapor = null;
 
         public override bool ParaHavale(Hesap gonderenHesap, Hesap alacakHesap, decimal gonderilecekMiktar)
         {
@@ -19,12 +20,12 @@ namespace BankaProjesi
             if (havaleOnay)
             {
                 islemTarihi = DateTime.Now;
-                hesapOzeti_Gond = new HesapOzeti(gonderenHesap, "Havale >> (" + alacakHesap.hesapNumarasi + ")", -gonderilecekMiktar, islemTarihi);
+                hesapOzeti_Gond = new HesapOzeti(gonderenHesap, "Havale >> (" + alacakHesap.hesapNumarasi + ")", -gonderilecekMiktar, islemTarihi, rapor);
                 gonderenHesap.HesapOzetiEkle(hesapOzeti_Gond);
 
                 alacakHesap.hangiMusteriyeait.HesabaParaYatir(alacakHesap, gonderilecekMiktar);
                 islemTarihi = DateTime.Now;
-                hesapOzeti_Alan = new HesapOzeti(alacakHesap, "(" + gonderenHesap.hesapNumarasi + ") >> Havale", gonderilecekMiktar, islemTarihi);
+                hesapOzeti_Alan = new HesapOzeti(alacakHesap, "(" + gonderenHesap.hesapNumarasi + ") >> Havale", gonderilecekMiktar, islemTarihi, rapor);
                 alacakHesap.HesapOzetiEkle(hesapOzeti_Alan);
             }
             return havaleOnay;

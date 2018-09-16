@@ -13,6 +13,7 @@ namespace BankaProjesi
     public partial class frmYeniHesap : Form
     {
         public Banka banka;
+        public GelirGiderRaporu rapor;
         public frmYeniHesap()
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace BankaProjesi
         Musteri ilgiliMusteri;
         ulong hesapNo;
         Random randHesapNo = new Random();
+        HesapOzeti hesapOzeti;
         DateTime islemTarihi;
 
         private void btnMusBul_Click(object sender, EventArgs e)
@@ -72,7 +74,7 @@ namespace BankaProjesi
             }
 
             islemTarihi = DateTime.Now;
-            HesapOzeti hesapOzeti = new HesapOzeti(yeniHesap, "Hesap Açma", +100, islemTarihi);
+            hesapOzeti = new HesapOzeti(yeniHesap, "Hesap Açma", 100, islemTarihi,rapor);
             yeniHesap.HesapOzetiEkle(hesapOzeti);
 
             btnHesapAc.Hide();

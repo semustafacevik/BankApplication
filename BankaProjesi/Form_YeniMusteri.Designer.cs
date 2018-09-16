@@ -200,10 +200,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(279, 378);
+            this.Controls.Add(this.btnMusteriEkle);
             this.Controls.Add(this.lblUyariTelNo);
             this.Controls.Add(this.lblUyariTCKN);
             this.Controls.Add(this.lblMusteriNo);
-            this.Controls.Add(this.btnMusteriEkle);
             this.Controls.Add(this.cmbMusTur);
             this.Controls.Add(this.txtTCKN);
             this.Controls.Add(this.txtTelNo);

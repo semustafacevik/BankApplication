@@ -13,6 +13,7 @@ namespace BankaProjesi
     public partial class frmHesapIslemleri : Form
     {
         public Banka banka;
+        public GelirGiderRaporu rapor;
         public frmHesapIslemleri()
         {
             InitializeComponent();
@@ -70,6 +71,7 @@ namespace BankaProjesi
             paraYatirma.MdiParent = ActiveForm;
             paraYatirma.StartPosition = FormStartPosition.CenterScreen;
             paraYatirma.Text = "PARA YATIRMA EKRANI";
+            paraYatirma.rapor = rapor;
             paraYatirma.Show();
         }
 
@@ -79,6 +81,7 @@ namespace BankaProjesi
             paraCekme.MdiParent = ActiveForm;
             paraCekme.StartPosition = FormStartPosition.CenterScreen;
             paraCekme.Text = "PARA ÇEKME EKRANI";
+            paraCekme.rapor = rapor;
             paraCekme.Show();
         }
 
@@ -88,6 +91,7 @@ namespace BankaProjesi
             havale.MdiParent = ActiveForm;
             havale.StartPosition = FormStartPosition.CenterScreen;
             havale.banka = banka;
+            havale.rapor = rapor;
             havale.Show();
         }
 

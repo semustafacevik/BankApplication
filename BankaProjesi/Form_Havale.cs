@@ -13,8 +13,9 @@ namespace BankaProjesi
     public partial class frmHavale : Form
     {
         public Banka banka;
-        private Hesap gonderenHesap;
-        private Hesap alanHesap;
+        public GelirGiderRaporu rapor;
+        Hesap gonderenHesap;
+        Hesap alanHesap;
 
         public frmHavale(Hesap gonderenHesap)
         {

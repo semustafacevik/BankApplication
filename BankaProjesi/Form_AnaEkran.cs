@@ -13,9 +13,11 @@ namespace BankaProjesi
     public partial class frmAnaEkran : Form
     {
         Banka AnaBanka = new Banka();
+        public GelirGiderRaporu AnaRapor = new GelirGiderRaporu();
         public frmAnaEkran()
         {
             InitializeComponent();
+            ButonAktivasyon_Gizle();
         }
 
         private void btnYeniMusteri_Click(object sender, EventArgs e)
@@ -33,6 +35,7 @@ namespace BankaProjesi
             yeniHesap.MdiParent = this;
             yeniHesap.StartPosition = FormStartPosition.CenterScreen;
             yeniHesap.banka = AnaBanka;
+            yeniHesap.rapor = AnaRapor;
             yeniHesap.Show();
         }
 
@@ -42,7 +45,36 @@ namespace BankaProjesi
             hesapIslemleri.MdiParent = this;
             hesapIslemleri.StartPosition = FormStartPosition.CenterScreen;
             hesapIslemleri.banka = AnaBanka;
+            hesapIslemleri.rapor = AnaRapor;
             hesapIslemleri.Show();
+        }
+
+        private void btnBankaRaporu_Click(object sender, EventArgs e)
+        {
+            ButonAktivasyon_Goster();
+            dgvRapor.Rows[0].Cells[0].Value = AnaRapor.girenPara + " ₺ ";
+            dgvRapor.Rows[0].Cells[1].Value = AnaRapor.cikanPara + " ₺ ";
+            dgvRapor.Rows[0].Cells[2].Value = AnaRapor.toplamPara + " ₺ ";
+
+        }
+
+        private void btnRaporKapat_Click(object sender, EventArgs e)
+        {
+            ButonAktivasyon_Gizle();
+        }
+
+        private void ButonAktivasyon_Goster()
+        {
+            dgvRapor.Show();
+            lblRaporBaslik.Show();
+            btnRaporKapat.Show();
+        }
+
+        private void ButonAktivasyon_Gizle()
+        {
+            dgvRapor.Hide();
+            lblRaporBaslik.Hide();
+            btnRaporKapat.Hide();
         }
     }
 }
