@@ -14,6 +14,7 @@ namespace BankaProjesi
     {
         public Banka banka;
         public GelirGiderRaporu rapor;
+
         public frmHesapIslemleri()
         {
             InitializeComponent();
@@ -54,8 +55,8 @@ namespace BankaProjesi
 
             if (secilenHesap != null)
             {
-                txtHesBilgileri.Text = "TCKN: " + secilenHesap.hangiMusteriyeait.TCKN + Environment.NewLine +
-                                       "Ad Soyad: " + secilenHesap.hangiMusteriyeait.ad + " " + secilenHesap.hangiMusteriyeait.soyad + Environment.NewLine +
+                txtHesBilgileri.Text = "TCKN: " + secilenHesap.hangiMusteriyeAit.TCKN + Environment.NewLine +
+                                       "Ad Soyad: " + secilenHesap.hangiMusteriyeAit.ad + " " + secilenHesap.hangiMusteriyeAit.soyad + Environment.NewLine +
                                        secilenHesap.hesapNumarasi + " Numaralı Hesaptaki Bakiye: " + secilenHesap.bakiye + " ₺ - (Ek hesap: " + secilenHesap.ekHesap + " ₺)";
                 ButonAktivasyon_Ac();
             }
@@ -109,7 +110,7 @@ namespace BankaProjesi
                 cmbHesNo.Text = "Hesap Seçiniz";
                 cmbHesNo.Items.Remove(secilenHesap.hesapNumarasi);
                 banka.BankadanHesapSil(secilenHesap);
-                secilenHesap.hangiMusteriyeait.MusteridenHesapSil(secilenHesap);
+                secilenHesap.hangiMusteriyeAit.MusteridenHesapSil(secilenHesap);
                 ButonAktivasyon_Kapat();
             }
 
@@ -126,6 +127,9 @@ namespace BankaProjesi
             }
         }
 
+        /// <summary>
+        /// İlgili butonların gösterildiği fonksiyon
+        /// </summary>
         private void ButonAktivasyon_Ac()
         {
             btnParaYatir.Enabled = true;
@@ -135,6 +139,9 @@ namespace BankaProjesi
             btnHesOzet.Enabled = true;
         }
 
+        /// <summary>
+        /// İlgili butonların gizlendiği fonksiyon
+        /// </summary>
         private void ButonAktivasyon_Kapat()
         {
             btnParaYatir.Enabled = false;

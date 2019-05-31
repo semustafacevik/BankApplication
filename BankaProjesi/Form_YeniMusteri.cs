@@ -13,6 +13,7 @@ namespace BankaProjesi
     public partial class frmYeniMusteri : Form
     {
         public Banka banka;
+
         public frmYeniMusteri()
         {
             InitializeComponent();
@@ -37,19 +38,19 @@ namespace BankaProjesi
             musteriTelno = Convert.ToUInt64(txtTelNo.Text);
             musteriTur = cmbMusTur.SelectedItem.ToString();
 
-            bool kayitDurumu = banka.KimlikSorgula(musteriTCKN);
+            bool kayitDurumu = banka.KimlikSorgula(musteriTCKN); // kayıt için onay durumunun alınması
 
-            if (txtTCKN.TextLength == 11 && txtTelNo.TextLength == 10 && kayitDurumu)
+            if (txtTCKN.TextLength == 11 && txtTelNo.TextLength == 10 && kayitDurumu) // TCKN ve TelNo kontrol işlemleri
             {
                 if (musteriTur == "Bireysel Müşteri")
                 {
-                    musteriNo = Convert.ToUInt32(randMusterino.Next(100000, 500000));
+                    musteriNo = Convert.ToUInt32(randMusterino.Next(100000, 500000)); // Bireysel müşteriye ait random müşteri numarası üretme 100000 - 500000
                     FarkliMusteriNumarasiUret(100000, 500000);
                 }
 
                 else if (musteriTur == "Ticari Müşteri")
                 {
-                    musteriNo = Convert.ToUInt32(randMusterino.Next(500000, 1000000));
+                    musteriNo = Convert.ToUInt32(randMusterino.Next(500000, 1000000)); // Ticari müşteriye ait random müşteri numarası üretme 500000 - 1000000
                     FarkliMusteriNumarasiUret(500000, 1000000);
                 }
 
@@ -85,6 +86,11 @@ namespace BankaProjesi
             }
         }
 
+        /// <summary>
+        /// Bankaya kayıtlı müşteri numarası olması durumunda müşteri numarasının tekrar üretilmesi
+        /// </summary>
+        /// <param name="minDeger">Random alt değer</param>
+        /// <param name="maxDeger">Random üst değer</param>
         private void FarkliMusteriNumarasiUret(int minDeger, int maxDeger)
         {
             foreach (Musteri mevcutMusteriler in banka.Musteriler)
@@ -162,21 +168,6 @@ namespace BankaProjesi
         private void txtTelNo_TextChanged(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-        }
-
-        private void txtSoyad_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTelNo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTCKN_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

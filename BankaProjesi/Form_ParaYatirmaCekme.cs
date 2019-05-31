@@ -22,7 +22,7 @@ namespace BankaProjesi
             InitializeComponent();
             this.hesap = hesap;
             this.islemTuru = islemTuru;
-            ilgiliMusteri = hesap.hangiMusteriyeait;
+            ilgiliMusteri = hesap.hangiMusteriyeAit;
         }      
 
         decimal girilenTutar;

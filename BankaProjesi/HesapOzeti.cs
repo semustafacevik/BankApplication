@@ -14,6 +14,14 @@ namespace BankaProjesi
         public decimal tutar;
         public DateTime islemTarihi;
 
+        /// <summary>
+        /// İlgili işleme ait tüm bilgilerin kaydedildiği constructor
+        /// </summary>
+        /// <param name="hesap">İlgili hesap</param>
+        /// <param name="islemTuru">İlgili hesaba ait işlme türü</param>
+        /// <param name="tutar">İlgili işleme ait tutar</param>
+        /// <param name="islemTarihi">İlgili işleme ait işlem tarihi</param>
+        /// <param name="rapor">İlgili işlemlerin raporlanacağı rapor sınıfı</param>
         public HesapOzeti(Hesap hesap, string islemTuru, decimal tutar, DateTime islemTarihi, GelirGiderRaporu rapor)
         {
             this.hesap = hesap;

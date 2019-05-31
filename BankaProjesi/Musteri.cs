@@ -34,9 +34,9 @@ namespace BankaProjesi
         int gelenOnaykodu;
         public int HesabaParaYatir(Hesap ilgiliHesap, decimal yatirilacakMiktar)
         {
-            gelenOnaykodu = ParaYatirmaKontrol(ilgiliHesap, yatirilacakMiktar);
+            gelenOnaykodu = ParaYatirmaKontrol(ilgiliHesap, yatirilacakMiktar); // ilgili fonksiyondan onay kodunun çekilmesi
 
-            switch (gelenOnaykodu)
+            switch (gelenOnaykodu) // gelen onay koduna göre işlemlerin yapılması
             {
                 case 10:
                     ilgiliHesap.bakiye = yatirilacakMiktar - (100 - ilgiliHesap.ekHesap);
@@ -66,9 +66,9 @@ namespace BankaProjesi
 
         public int HesaptanParaCek(Hesap ilgiliHesap, decimal cekilecekMiktar)
         {
-            gelenOnaykodu = ParaCekmeKontrol(ilgiliHesap,cekilecekMiktar);
+            gelenOnaykodu = ParaCekmeKontrol(ilgiliHesap,cekilecekMiktar); // ilgili fonksiyondan onay kodunun çekilmesi
 
-            switch (gelenOnaykodu)
+            switch (gelenOnaykodu) // gelen onay koduna göre işlemlerin yapılması
             {
                 case 20:
                     break;
@@ -80,12 +80,12 @@ namespace BankaProjesi
                     ilgiliHesap.bakiye -= cekilecekMiktar;
                     ilgiliHesap.ekHesap += ilgiliHesap.bakiye;
                     ilgiliHesap.bakiye = 0;
-                    ilgiliHesap.hesaptanCekilentoplamTutar += cekilecekMiktar;
+                    ilgiliHesap.hesaptanCekilenToplamTutar += cekilecekMiktar;
                     break;
 
                 case 23:
                     ilgiliHesap.bakiye -= cekilecekMiktar;
-                    ilgiliHesap.hesaptanCekilentoplamTutar += cekilecekMiktar;
+                    ilgiliHesap.hesaptanCekilenToplamTutar += cekilecekMiktar;
                     break;
 
                 default:
@@ -96,45 +96,64 @@ namespace BankaProjesi
             return gelenOnaykodu;
         }
 
-        public int ParaYatirmaKontrol(Hesap kontrolEdilecekhesap, decimal yatirilacakMiktar)
+        /// <summary>
+        /// Para yatırma işlemine ait kontrollerin yapıldığı fonksiyon
+        /// </summary>
+        /// <param name="kontrolEdilecekhesap">Para yatırılacak ilgili hesap</param>
+        /// <param name="yatirilacakMiktar">İlgili hesaba yatırılacak tutar</param>
+        /// <returns>Kontrollere göre onay kodu 10 - 13</returns>
+        public int ParaYatirmaKontrol(Hesap kontrolEdilecekhesap, decimal yatirilacakMiktar) 
         {
-            if (kontrolEdilecekhesap.ekHesap < 100) // ek hesaptaki miktar 100 degilse ilk once o tamamlanmali
+            if (kontrolEdilecekhesap.ekHesap < 100) // ilgili hesabın ilk önce ek hesaptaki tutarı kontrol edilir -> ekhesap 100 tlden az ise önce ek hesap tamamlanacağına dair onay kodları
             {
                 if (yatirilacakMiktar > 100)
-                    return 10;  // yatirilacak miktar 100' den fazlaysa 
+                    return 10; 
 
                 else if (kontrolEdilecekhesap.ekHesap + yatirilacakMiktar > 100)
                     return 11;
 
                 else
-                    return 12; // yatiralacak miktar 100' den azsa
+                    return 12;
             }
 
-            else // ek hesaptaki miktar 100 ise
+            else // ek hesap 100 tlden fazlaysa yatırılan para direk hesaba aktarılacağına dair onay kodu
                 return 13;
         }
 
-        public int ParaCekmeKontrol(Hesap kontrolEdilecekhesap, decimal cekilecekMiktar)
+        /// <summary>
+        ///  Para çekme işlemine ait kontrollerin yapıldığı fonksiyon
+        /// </summary>
+        /// <param name="kontrolEdilecekhesap">Para çekilecek ilgili hesap</param>
+        /// <param name="cekilecekMiktar">İlgili hesaptan çekilecek tutar</param>
+        /// <returns>Kontrollere göre onay kodu 20 - 23</returns>
+        public int ParaCekmeKontrol(Hesap kontrolEdilecekhesap, decimal cekilecekMiktar) 
         {
-            if ((cekilecekMiktar + kontrolEdilecekhesap.hesaptanCekilentoplamTutar) > 750)
+            if ((cekilecekMiktar + kontrolEdilecekhesap.hesaptanCekilenToplamTutar) > 750)
             {
-                return 20; // gunluk para cekme limiti asildi
+                return 20; // gunluk para cekme limiti asildiğina dair onay kodu
             }
 
             else if (cekilecekMiktar > (kontrolEdilecekhesap.bakiye + kontrolEdilecekhesap.ekHesap))
             {
-                return 21; // yetersiz bakiye
+                return 21; // yetersiz bakiye olduğuna dair onay kodu
             }
 
             else if (cekilecekMiktar > kontrolEdilecekhesap.bakiye && cekilecekMiktar <= (kontrolEdilecekhesap.bakiye + kontrolEdilecekhesap.ekHesap))
             {
-                return 22; // yetersiz bakiye ama ek hesapla birlikte yeterli miktar var
+                return 22; // yetersiz bakiye ama ek hesapla birlikte yeterli miktar olduğuna dair onay kodu
             }
 
             else
-                return 23;  // herhangi bir sorun yok
+                return 23;  // herhangi bir sorun olmadığına dair onay kodu
         }
 
+        /// <summary>
+        /// Para havale etme işlemine ait kontrollerin yapıldığı sanal fonksiyon - bu sınıftan kalıtılan sınıflarda bu sanal fonksiyon ezielecek -
+        /// </summary>
+        /// <param name="gonderenHesap">İlgili gönderen hesap</param>
+        /// <param name="alacakHesap">İlgili alacak hesap</param>
+        /// <param name="gonderilecekMiktar">Havale işlemine ait ilgili miktar</param>
+        /// <returns>Kontroller sonucunda true or false</returns>
         public virtual bool ParaHavale(Hesap gonderenHesap, Hesap alacakHesap, decimal gonderilecekMiktar)
         {
             if (gonderilecekMiktar <= gonderenHesap.bakiye)

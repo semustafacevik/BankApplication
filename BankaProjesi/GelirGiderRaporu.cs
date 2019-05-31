@@ -14,9 +14,13 @@ namespace BankaProjesi
 
         public GelirGiderRaporu()
         {
-
         }
 
+        /// <summary>
+        /// Bankadan yapılan tüm işlemler adına bu işlemlerin tutarlarıyla birlikte raporlandığı fonksiyon
+        /// </summary>
+        /// <param name="tutar">Yapılan işleme ait tutar</param>
+        /// <param name="islem">Yapılan işlemin türü</param>
         public void RaporEt(decimal tutar, string islem)
         {
             switch (islem)

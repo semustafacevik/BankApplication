@@ -11,8 +11,8 @@ namespace BankaProjesi
         public ulong hesapNumarasi;
         public decimal bakiye;
         public decimal ekHesap;
-        public decimal hesaptanCekilentoplamTutar;
-        public Musteri hangiMusteriyeait;
+        public decimal hesaptanCekilenToplamTutar;
+        public Musteri hangiMusteriyeAit;
         public List<HesapOzeti> hesapOzeti;
 
         public Hesap()

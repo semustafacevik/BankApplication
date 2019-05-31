@@ -33,7 +33,7 @@ namespace BankaProjesi
 
             if (alanHesap != null)
             {
-                txtGondBil.Text = "Ad: " + alanHesap.hangiMusteriyeait.ad + "\r\nSoyad: " + alanHesap.hangiMusteriyeait.soyad;
+                txtGondBil.Text = "Ad: " + alanHesap.hangiMusteriyeAit.ad + "\r\nSoyad: " + alanHesap.hangiMusteriyeAit.soyad;
                 txtTutar.Enabled = true;
                 btnOnayla.Enabled = true;
                 btnHesBul.Enabled = false;
@@ -47,7 +47,7 @@ namespace BankaProjesi
         {
             decimal girilenTutar = Convert.ToDecimal(txtTutar.Text);
 
-            bool havaleOnay = gonderenHesap.hangiMusteriyeait.ParaHavale(gonderenHesap, alanHesap, girilenTutar);
+            bool havaleOnay = gonderenHesap.hangiMusteriyeAit.ParaHavale(gonderenHesap, alanHesap, girilenTutar);
 
             if (havaleOnay)
             {

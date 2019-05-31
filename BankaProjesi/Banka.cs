@@ -62,9 +62,14 @@ namespace BankaProjesi
             return null;
         }
 
+        /// <summary>
+        /// Bankada ilgili TC Kimlik Numarasına ait müşteri olup olmadığını sorgulayan fonksiyon
+        /// </summary>
+        /// <param name="TCKN">İlgili TC Kimlik Numarası</param>
+        /// <returns>İlgili TCKN ait /müşteri yoksa -> true /müşteri varsa -> false </returns>
         public bool KimlikSorgula(ulong TCKN)
         {
-            foreach (Musteri musteriler in Musteriler) 
+            foreach (Musteri musteriler in Musteriler) // Bankadaki tüm müşterilerin taranması
             {
                 if (musteriler.TCKN == TCKN)
                     return false;

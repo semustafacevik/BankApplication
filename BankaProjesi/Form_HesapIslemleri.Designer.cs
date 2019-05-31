@@ -188,6 +188,8 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmHesapIslemleri";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "HESAP İŞLEMLERİ EKRANI";

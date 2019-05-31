@@ -14,6 +14,7 @@ namespace BankaProjesi
     {
         public Banka banka;
         public GelirGiderRaporu rapor;
+
         public frmYeniHesap()
         {
             InitializeComponent();
@@ -56,14 +57,14 @@ namespace BankaProjesi
         {
             if (ilgiliMusteri.musteriTuru == "Bireysel Müşteri")
             {
-                hesapNo = Convert.ToUInt64(randHesapNo.Next(1000000, 5000000));
+                hesapNo = Convert.ToUInt64(randHesapNo.Next(1000000, 5000000)); // Bireysel hesaba ait random hesap numarası üretme 1000000 - 5000000
                 FarkliHesapNumarasiUret(1000000, 5000000);
                 HesapBilgileriniKaydet();
             } 
 
             else if(ilgiliMusteri.musteriTuru == "Ticari Müşteri")
             {
-                hesapNo = Convert.ToUInt64(randHesapNo.Next(5000000, 10000000));
+                hesapNo = Convert.ToUInt64(randHesapNo.Next(5000000, 10000000)); // Ticari hesaba ait random hesap numarası üretme 5000000 - 10000000
                 FarkliHesapNumarasiUret(5000000, 10000000);
                 HesapBilgileriniKaydet();
             }
@@ -87,11 +88,16 @@ namespace BankaProjesi
             yeniHesap = new Hesap();
             yeniHesap.hesapNumarasi = hesapNo;
             yeniHesap.ekHesap = 100;
-            yeniHesap.hangiMusteriyeait = ilgiliMusteri;
+            yeniHesap.hangiMusteriyeAit = ilgiliMusteri;
             ilgiliMusteri.MusteriyeHesapEkle(yeniHesap);
             banka.BankayaHesapEkle(yeniHesap);
         }
 
+        /// <summary>
+        /// Bankaya kayıtlı hesap numarası olması durumunda hesap numarasının tekrar üretilmesi
+        /// </summary>
+        /// <param name="minDeger">Random alt değer</param>
+        /// <param name="maxDeger">Random üst değer</param>
         private void FarkliHesapNumarasiUret(int minDeger, int maxDeger)
         {
             foreach (Hesap mevcutHesaplar in banka.Hesaplar)

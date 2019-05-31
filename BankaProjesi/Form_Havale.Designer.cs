@@ -155,6 +155,8 @@
             this.Controls.Add(this.txtDurumBilgisi);
             this.Controls.Add(this.label3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmHavale";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "HAVALE EKRANI";

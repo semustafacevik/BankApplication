@@ -92,7 +92,6 @@
             this.txtSoyad.Name = "txtSoyad";
             this.txtSoyad.Size = new System.Drawing.Size(204, 32);
             this.txtSoyad.TabIndex = 2;
-            this.txtSoyad.TextChanged += new System.EventHandler(this.txtSoyad_TextChanged);
             this.txtSoyad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoyad_KeyPress);
             // 
             // txtAd
@@ -114,7 +113,6 @@
             this.txtTelNo.Name = "txtTelNo";
             this.txtTelNo.Size = new System.Drawing.Size(204, 32);
             this.txtTelNo.TabIndex = 3;
-            this.txtTelNo.TextChanged += new System.EventHandler(this.txtTelNo_TextChanged);
             this.txtTelNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelNo_TextChanged);
             // 
             // txtTCKN
@@ -126,7 +124,6 @@
             this.txtTCKN.Name = "txtTCKN";
             this.txtTCKN.Size = new System.Drawing.Size(204, 32);
             this.txtTCKN.TabIndex = 0;
-            this.txtTCKN.TextChanged += new System.EventHandler(this.txtTCKN_TextChanged);
             this.txtTCKN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTCKN_KeyPress);
             // 
             // label5
@@ -155,6 +152,7 @@
             // 
             // btnMusteriEkle
             // 
+            this.btnMusteriEkle.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnMusteriEkle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnMusteriEkle.Location = new System.Drawing.Point(87, 318);
             this.btnMusteriEkle.Name = "btnMusteriEkle";
@@ -215,6 +213,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmYeniMusteri";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MÜŞTERİ EKLEME EKRANI";

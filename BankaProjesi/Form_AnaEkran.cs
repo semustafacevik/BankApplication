@@ -14,6 +14,7 @@ namespace BankaProjesi
     {
         Banka AnaBanka = new Banka();
         public GelirGiderRaporu AnaRapor = new GelirGiderRaporu();
+
         public frmAnaEkran()
         {
             InitializeComponent();
@@ -63,6 +64,9 @@ namespace BankaProjesi
             ButonAktivasyon_Gizle();
         }
 
+        /// <summary>
+        /// İlgili butonların gösterildiği fonksiyon
+        /// </summary>
         private void ButonAktivasyon_Goster()
         {
             dgvRapor.Show();
@@ -70,6 +74,9 @@ namespace BankaProjesi
             btnRaporKapat.Show();
         }
 
+        /// <summary>
+        /// İlgili fonksiyonların gizlendiği fonksiyon
+        /// </summary>
         private void ButonAktivasyon_Gizle()
         {
             dgvRapor.Hide();
