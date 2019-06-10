@@ -1,4 +1,4 @@
-# BankApplication_on_WinForm
+# BankApplication
 
 *Bu uygulama OOP (Nesneye Yönelik Programlama) dersi için aşağıdaki senaryo baz alınarak geliştirilmiştir.* <br/><br/>
 
